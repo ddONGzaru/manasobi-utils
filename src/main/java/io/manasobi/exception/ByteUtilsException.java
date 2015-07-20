@@ -7,7 +7,7 @@ package io.manasobi.exception;
  * @since 1.0.0
  *
  */
-public class ByteUtilsException extends Exception {
+public class ByteUtilsException extends RuntimeException {
 
 	private static final long serialVersionUID = -7490832949014151286L;
 	

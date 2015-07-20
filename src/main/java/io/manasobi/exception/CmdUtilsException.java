@@ -7,7 +7,7 @@ package io.manasobi.exception;
  * @since 1.0.0
  *
  */
-public class CmdUtilsException extends Exception {
+public class CmdUtilsException extends RuntimeException {
 
 	private static final long serialVersionUID = -6487867932690791715L;
 

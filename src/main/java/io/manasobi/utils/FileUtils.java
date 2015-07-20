@@ -43,6 +43,7 @@ import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.apache.commons.io.filefilter.WildcardFileFilter;
 
 import io.manasobi.constnat.Result;
+import io.manasobi.exception.FileUtilsException;
 
 /**
  * 파일 및 디렉토리 복사, 삭제, 초기화 등에 관련한 편의 기능들을 제공한다.<br>
@@ -740,6 +741,46 @@ public final class FileUtils {
 	public static boolean existsFile(String file) {
 		return existsFile(new File(file));
 	}
+	
+	/**
+	 * 해당 디렉토리의 존재유무를 확인한다.
+	 * 
+	 * @param dir 존재유무를 확인할 디렉토리
+	 * @return 존재유무에 대한 결과
+	 */
+	public static boolean notExistsDir(File dir) {
+		return !existsDir(dir);
+	}
+	
+	/**
+	 * 해당 디렉토리의 존재유무를 확인한다.
+	 * 
+	 * @param dir 존재유무를 확인할 디렉토리
+	 * @return 존재유무에 대한 결과
+	 */
+	public static boolean notExistsDir(String dir) {
+		return !existsDir(new File(dir));
+	}
+
+	/**
+	 * 해당 파일의 존재유무를 확인한다.
+	 * 
+	 * @param file 존재유무를 확인할 파일
+	 * @return 존재유무에 대한 결과
+	 */
+	public static boolean notExistsFile(File file) {
+		return !existsFile(file);
+	}
+
+	/**
+	 * 해당 파일의 존재유무를 확인한다.
+	 * 
+	 * @param file 존재유무를 확인할 파일
+	 * @return 존재유무에 대한 결과
+	 */
+	public static boolean notExistsFile(String file) {
+		return !existsFile(new File(file));
+	}
 
 	/**
      * Java가 실행되는 현재 폴더 경로를 반환한다.
@@ -816,38 +857,93 @@ public final class FileUtils {
         return new File(getUserHomeDir());
     }
 	
+	/**
+	 * 해당 target이 디렉토리인지를 체크한다.
+	 * 
+	 * @param dir 디렉토리
+	 * @return 해당 파일이 디렉토리이면 true, 아니면 false
+	 */
 	public static boolean isDir(File dir) {
 		return (!dir.isDirectory()) ? false : true;
 	}
 	
+	/**
+	 * 해당 target이 디렉토리인지를 체크한다.
+	 * 
+	 * @param dir 디렉토리
+	 * @return 해당 파일이 디렉토리이면 true, 아니면 false
+	 */
 	public static boolean isDir(String dir) {
 		return isDir(new File(dir));
 	}
 
+	/**
+	 * 해당 target이 파일인지를 체크한다.
+	 * 
+	 * @param file 파일
+	 * @return 해당 파일이 파일이면 true, 아니면 false
+	 */
 	public static boolean isFile(File file) {
 		return (!file.isFile()) ? false : true;
 	}
 	
+	/**
+	 * 해당 target이 파일인지를 체크한다.
+	 * 
+	 * @param file 파일
+	 * @return 해당 파일이 파일이면 true, 아니면 false
+	 */
 	public static boolean isFile(String file) {
 		return isFile(new File(file));
 	}
 
+	/**
+	 * 해당 target이 디렉토리가 아닌지를 체크한다.
+	 * 
+	 * @param dir 디렉토리
+	 * @return 해당 파일이 디렉토리가 아니면 true, 아니면 false
+	 */
 	public static boolean isNotDir(File dir) {
 		return (!dir.isDirectory()) ? true : false;
 	}
 	
+	/**
+	 * 해당 target이 디렉토리가 아닌지를 체크한다.
+	 * 
+	 * @param dir 디렉토리
+	 * @return 해당 파일이 디렉토리가 아니면 true, 아니면 false
+	 */
 	public static boolean isNotDir(String dir) {
 		return isNotDir(new File(dir));
 	}
 
+	/**
+	 * 해당 target이 파일이 아닌지를 체크한다.
+	 * 
+	 * @param file 파일
+	 * @return 해당 파일이 파일이 아니면 true, 아니면 false
+	 */
 	public static boolean isNotFile(File file) {
 		return (!file.isFile()) ? true : false;
 	}
 	
+	/**
+	 * 해당 target이 파일이 아닌지를 체크한다.
+	 * 
+	 * @param file 파일
+	 * @return 해당 파일이 파일이 아니면 true, 아니면 false
+	 */
 	public static boolean isNotFile(String file) {
 		return isNotFile(new File(file));
 	}
 	
+	/**
+	 * 지정한 디렉토리 하위의 디렉토리명과 파일명을 가져온다. 
+	 * 
+	 * @param dir 디렉토리
+	 * @param includeRootDir 가장 상위의 디렉토리명을 포함할지를 결정. (true면 최상위 폴더 포함)
+	 * @return 디렉토리 하위의 디렉토리명과 파일명에 대한 리스트
+	 */
 	public static List<String> listFileAndDirNames(String dir, boolean includeRootDir) {
 		
 		List<File> dirs = (List<File>) org.apache.commons.io.FileUtils.listFilesAndDirs(new File(dir), 
@@ -870,6 +966,13 @@ public final class FileUtils {
 		return dirNameList;
 	}
 	
+	/**
+	 * 지정한 디렉토리 하위의 디렉토리명과 파일명을 File 타입의 배열로 가져온다. 
+	 * 
+	 * @param dir 디렉토리
+	 * @param includeRootDir 가장 상위의 디렉토리명을 포함할지를 결정. (true면 최상위 폴더 포함)
+	 * @return 디렉토리 하위의 디렉토리명과 파일명에 대한 File 타입의 배열
+	 */
 	public static File[] listFilesAndDirs(String dir, boolean includeRootDir) {
 		
 		List<File> filesAndDirs = (List<File>) org.apache.commons.io.FileUtils.listFilesAndDirs(new File(dir), 
@@ -893,6 +996,13 @@ public final class FileUtils {
 		
 	}
 	
+	/**
+	 * 지정한 디렉토리 하위의 디렉토리명을 가져온다. 
+	 * 
+	 * @param dir 디렉토리
+	 * @param includeRootDir 가장 상위의 디렉토리명을 포함할지를 결정. (true면 최상위 폴더 포함)
+	 * @return 디렉토리 하위의 디렉토리명에 대한 리스트
+	 */
 	public static List<String> listDirNames(String dir, boolean includeRootDir) {
 		
 		List<File> dirs = (List<File>) org.apache.commons.io.FileUtils.listFilesAndDirs(new File(dir), 
@@ -915,6 +1025,13 @@ public final class FileUtils {
 		return dirNameList;		
 	}
 	
+	/**
+	 * 지정한 디렉토리 하위의 디렉토리명을 File 타입의 배열로 가져온다. 
+	 * 
+	 * @param dir 디렉토리
+	 * @param includeRootDir 가장 상위의 디렉토리명을 포함할지를 결정. (true면 최상위 폴더 포함)
+	 * @return 디렉토리 하위의 디렉토리명에 대한 File 타입의 배열
+	 */
 	public static File[] listDirs(String dir, boolean includeRootDir) {
 		
 		List<File> dirs = (List<File>) org.apache.commons.io.FileUtils.listFilesAndDirs(new File(dir), 
@@ -937,21 +1054,34 @@ public final class FileUtils {
 		return dirList.toArray(new File[dirList.size()]);
 	}
 	
+	/**
+	 * 지정한 디렉토리 하위의 파일들을 File 타입의 배열로 가져온다. 
+	 * 
+	 * @param dir 디렉토리
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 탐색 유무
+	 * @return 디렉토리 하위의 파일에 대한 File 타입의 배열
+	 */
 	public static File[] listFiles(String dir, boolean recursive) {
 		
 		return org.apache.commons.io.FileUtils.convertFileCollectionToFileArray(
 				org.apache.commons.io.FileUtils.listFiles(new File(dir), null, recursive));	
 	}
 	
-	public static List<String> listFileNames(String dir, boolean recursive) {
+	/**
+	 * 지정한 디렉토리 하위의 파일명들에 대한 리스트를 가져온다.
+	 * 
+	 * @param dir 디렉토리
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 탐색 유무
+	 * @return 디렉토리 하위의 파일들에 대한 파일명 리스트
+	 */
+	public static List<String> listFileNames(String dir, boolean recursive) throws FileUtilsException {
 		
 		Collection<File> files = null;
 		
 		try {
 			files = org.apache.commons.io.FileUtils.listFiles(new File(dir), null, recursive);
 		} catch (Exception e) {
-			SdpLogger.error("FileUtils-listFileNames ERROR: " + e.getMessage(), FileUtils.class);
-			return null;
+			throw new FileUtilsException(e.getMessage());
 		}
 		
 		List<String> fileNamesList = new ArrayList<String>();
@@ -963,6 +1093,14 @@ public final class FileUtils {
 		return fileNamesList;
 	}
 	
+	/**
+	 * 지정한 파일 확장자로 구성된 파일들에 대한 리스트를 가져온다.
+	 * 
+	 * @param dir 디렉토리 
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 작업 유무
+	 * @param extList 포함시킬 확장자 리스트
+	 * @return 지정한 파일 확장자로 구성된 파일들에 대한 리스트
+	 */
 	public static List<String> listFilenamesIncludeExt(String dir, boolean recursive, String... extList) {
 		
 		List<File> extFilterList = (List<File>) org.apache.commons.io.FileUtils.listFiles(new File(dir), extList,  recursive);
@@ -976,6 +1114,14 @@ public final class FileUtils {
 		return resultList;		
 	}
 
+	/**
+	 * 지정한 파일 확장자로 구성된 파일들을 File 타입의 배열로 가져온다.
+	 * 
+	 * @param dir 디렉토리 
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 작업 유무
+	 * @param extList 포함시킬 확장자 리스트
+	 * @return 지정한 파일 확장자로 구성된 파일들에 대한 File 타입의 배열
+	 */
 	public static File[] listFilesIncludeExt(String dir, boolean recursive, String... extList) {
 		
 		Collection<File> resultFiles = org.apache.commons.io.FileUtils.listFiles(new File(dir), extList,  recursive);
@@ -983,6 +1129,14 @@ public final class FileUtils {
 		return org.apache.commons.io.FileUtils.convertFileCollectionToFileArray(resultFiles);		
 	}
 	
+	/**
+	 * 지정한 파일 확장자를 제외한 파일들의 파일명 리스트를 가져온다.
+	 * 
+	 * @param dir 디렉토리 
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 작업 유무
+	 * @param extList 포함시킬 확장자 리스트
+	 * @return 지정한 파일 확장자를 제외한 파일들의 파일명 리스트
+	 */
 	public static List<String> listFilenamesExcludeExt(String dir, boolean recursive, String... extList) {
 		
 		IOFileFilter suffixFileFilters = new SuffixFileFilter(extList, IOCase.INSENSITIVE);
@@ -999,6 +1153,14 @@ public final class FileUtils {
 		return resultList;		
 	}
 
+	/**
+	 * 지정한 파일 확장자를 제외한 파일들을 File 타입의 배열로 가져온다.
+	 * 
+	 * @param dir 디렉토리 
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 작업 유무
+	 * @param extList 포함시킬 확장자 리스트
+	 * @return 지정한 파일 확장자를 제외한 파일들에 대한 File 타입의 배열
+	 */
 	public static File[] listFilesExcludeExt(String dir, boolean recursive, String... extList) {
 		
 		IOFileFilter suffixFileFilters = new SuffixFileFilter(extList, IOCase.INSENSITIVE);
@@ -1009,6 +1171,15 @@ public final class FileUtils {
 		return org.apache.commons.io.FileUtils.convertFileCollectionToFileArray(resultFiles);		
 	}
 	
+	/**
+	 * 지정한 와일드카드가 포함된 파일들에 대한 파일명의 리스트를 가져온다.<br/>
+	 * 예) 와일드 카드: "test*.*" -> test로 시작되는 파일 전부
+	 * 
+	 * @param dir 디렉토리
+	 * @param wildcards 포함시킬 와일드카드
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 작업 유무
+	 * @return 지정한 와일드카드가 포함된 파일들에 대한 파일명의 리스트
+	 */
 	public static List<String> listFilenamesByWildcard(String dir, String[] wildcards, boolean recursive) {
 		
 		IOFileFilter wildcardFileFileter = new WildcardFileFilter(wildcards, IOCase.INSENSITIVE);
@@ -1030,6 +1201,15 @@ public final class FileUtils {
 		return resultList;		
 	}
 
+	/**
+	 * 지정한 와일드카드가 포함된 파일들에 대해 File 타입의 배열로 가져온다.<br/>
+	 * 예) 와일드 카드: "test*.*" -> test로 시작되는 파일 전부
+	 * 
+	 * @param dir 디렉토리
+	 * @param wildcards 포함시킬 와일드카드
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 작업 유무
+	 * @return 지정한 와일드카드가 포함된 파일들에 대해 File 타입의 배열
+	 */
 	public static File[] listFilesByWildcard(String dir, String[] wildcards, boolean recursive) {
 		
 		
@@ -1046,6 +1226,15 @@ public final class FileUtils {
 		return org.apache.commons.io.FileUtils.convertFileCollectionToFileArray(resultFiles);		
 	}
 	
+	/**
+	 * 지정한 와일드카드를 포함하지않는 파일들에 대한 파일명의 리스트를 가져온다.<br/>
+	 * 예) 와일드 카드: "test*.*" -> test로 시작되는 파일 전부 제외
+	 * 
+	 * @param dir 디렉토리
+	 * @param wildcards 제외시킬 와일드카드
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 작업 유무
+	 * @return 지정한 와일드카드에 포함되지않는 파일들에 대한 파일명의 리스트
+	 */
 	public static List<String> listExcludeFilenamesByWildcard(String dir, String[] wildcards, boolean recursive) {
 		
 		IOFileFilter wildcardExcludeFileFileter = new WildcardExcludeFileFilter(wildcards, IOCase.INSENSITIVE);
@@ -1067,6 +1256,15 @@ public final class FileUtils {
 		return resultList;		
 	}
 	
+	/**
+	 * 지정한 와일드카드를 포함하지않는 파일들에 대해 File 타입의 배열로 가져온다.<br/>
+	 * 예) 와일드 카드: "test*.*" -> test로 시작되는 파일 전부 제외
+	 * 
+	 * @param dir 디렉토리
+	 * @param wildcards 제외시킬 와일드카드
+	 * @param recursive 하위 폴더 내부의 파일들에 대한 작업 유무
+	 * @return 지정한 와일드카드에 포함되지않는 파일들에 대해 File 타입의 배열
+	 */
 	public static File[] listExcludeFilesByWildcard(String dir, String[] wildcards, boolean recursive) {
 		
 		
@@ -1083,7 +1281,796 @@ public final class FileUtils {
 		return org.apache.commons.io.FileUtils.convertFileCollectionToFileArray(resultFiles);		
 	}
 	
+	/**
+	 * 원본 디렉토리가 대상 디렉토리 명으로 이동한다.
+	 * 
+	 * @param srcDir  원본 디렉토리
+	 * @param destDir 대상 디렉토리
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveDir(File srcDir, File destDir) {
+		return moveDir(srcDir, destDir, true);
+	}
+	
+	/**
+	 * 원본 디렉토리가 대상 디렉토리 명으로 이동한다.
+	 * 
+	 * @param srcDir  원본 디렉토리
+	 * @param destDir 대상 디렉토리
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveDir(String srcDir, String destDir) {
+		return moveDir(srcDir, destDir, true);
+	}
+	
+	/**
+	 * 원본 디렉토리가 대상 디렉토리 명으로 이동한다.<br>
+	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
+	 * 설정한다.
+	 * 
+	 * @param srcDir  원본 디렉토리
+	 * @param destDir 대상 디렉토리
+	 * @param preserveFileDate 수정일 설정 플래그
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveDir(File srcDir, File destDir, boolean preserveFileDate) {
 
+		Result result = Result.EMPTY;
+		
+		if (!srcDir.exists()) {
+			return buildFailResult(result, srcDir + "가 존재하지 않습니다.");
+		}
+
+		if (isNotDir(srcDir)) {
+			return buildFailResult(result, srcDir + "는 디렉토리가 아닙니다.");
+		}
+
+		if (destDir.exists()) {
+			
+			result = deleteDir(destDir);
+			
+			if (result == Result.FAIL) {
+				return buildFailResult(result, destDir + " 디렉토리 삭제중에 에러가 발생하였습니다.");
+			}
+		}
+		
+		result = copyDir(srcDir, destDir, preserveFileDate);
+		
+		if (result == Result.FAIL) {
+			return buildFailResult(result, srcDir + " 디렉토리 복사중에 에러가 발생하였습니다.");
+		}
+            
+		result = deleteDir(srcDir);
+		
+		if (result == Result.FAIL) {
+			return buildFailResult(result, srcDir + " 디렉토리 삭제중에 에러가 발생하였습니다.");
+		}
+		
+		return Result.SUCCESS;
+	}
+	
+	/**
+	 * 원본 디렉토리가 대상 디렉토리 명으로 이동한다.<br>
+	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
+	 * 설정한다.
+	 * 
+	 * @param srcDir  원본 디렉토리
+	 * @param destDir 대상 디렉토리
+	 * @param preserveFileDate 수정일 설정 플래그            
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveDir(String srcDir, String destDir, boolean preserveFileDate) {
+		return moveDir(new File(srcDir), new File(destDir), preserveFileDate);
+	}
+
+	/**
+	 * 원본 디렉토리가 대상 디렉토리 하위로 이동한다.
+	 * 
+	 * @param srcDir  원본 디렉토리
+	 * @param destDir 대상 디렉토리
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveDirToDir(File srcDir, File destDir) {
+		return moveDirToDir(srcDir, destDir, true);
+	}
+
+	/**
+	 * 원본 디렉토리가 대상 디렉토리 하위로 이동한다.
+	 * 
+	 * @param srcDir  원본 디렉토리
+	 * @param destDir 대상 디렉토리
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveDirToDir(String srcDir, String destDir) {
+		return moveDirToDir(new File(srcDir), new File(destDir), true);
+	}
+	
+	/**
+	 * 원본 디렉토리가 대상 디렉토리 하위로 이동한다.<br>
+	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
+	 * 설정한다.
+	 * 
+	 * @param srcDir  원본 디렉토리
+	 * @param destDir 대상 디렉토리
+	 * @param preserveFileDate 수정일 설정 플래그
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveDirToDir(File srcDir, File destDir, boolean preserveFileDate) {
+
+		Result result = Result.EMPTY;
+		
+		if (isNotDir(srcDir)) {
+			return buildFailResult(result, srcDir + "는 디렉토리가 아닙니다.");
+		}
+		
+		if (notExistsDir(destDir)) {
+			
+			result = createDir(destDir.getAbsolutePath());
+			
+			if (result == Result.FAIL) {
+				return buildFailResult(result, destDir + " 디렉토리 생성 중에 에러가 발생하였습니다.");
+			}
+		}
+		
+		if (isNotDir(destDir)) {
+			return buildFailResult(result, destDir + "는 디렉토리가 아닙니다.");
+		}
+		
+		
+		String subDir = destDir.getAbsolutePath() + "/" + srcDir.getName();
+		File destSubDir = new File(subDir);
+
+		if (destSubDir.exists() && destSubDir.isDirectory()) {
+			
+			result = deleteDir(destSubDir);
+			
+			if (result == Result.FAIL) {
+				return buildFailResult(result, destDir + " 디렉토리 삭제중에 에러가 발생하였습니다.");
+			}
+		}
+
+		if (FileUtils.notExistsDir(subDir)) {
+			
+			result = createDir(subDir);
+			
+			if (result == Result.FAIL) {
+				return buildFailResult(result, destDir + " 디렉토리 생성 중에 에러가 발생하였습니다.");
+			}
+		}
+		
+		result = moveDir(srcDir, destSubDir, preserveFileDate);
+		
+		if (result == Result.FAIL) {
+			return buildFailResult(result, srcDir + " 이동 중에 에러가 발생하였습니다.");
+		}
+
+		return Result.SUCCESS;
+	}
+
+	/**
+	 * 원본 디렉토리가 대상 디렉토리 하위로 이동한다.<br>
+	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
+	 * 설정한다.
+	 * 
+	 * @param srcDir  원본 디렉토리
+	 * @param destDir 대상 디렉토리
+	 * @param preserveFileDate 수정일 설정 플래그
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveDirToDir(String srcDir, String destDir, boolean preserveFileDate) {
+		return moveDirToDir(new File(srcDir), new File(destDir), preserveFileDate);
+	}
+	
+	/**
+	 * 원본 파일을 대상 파일 명으로 이동한다.
+	 * 
+	 * @param srcFile  원본 파일
+	 * @param destFile 대상 파일
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveFile(File srcFile, File destFile) {
+		return moveFile(srcFile, destFile, true);
+	}
+	
+	/**
+	 * 원본 파일을 대상 파일 명으로 이동한다.
+	 * 
+	 * @param srcFile  원본 파일
+	 * @param destFile 대상 파일
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveFile(String srcFile, String destFile) {
+		return moveFile(new File(srcFile), new File(destFile), true);
+	}
+	
+	/**
+	 * 원본 파일을 대상 파일 명으로 이동한다.<br>
+	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
+	 * 설정한다.
+	 * 
+	 * @param srcFile  원본 파일
+	 * @param destFile 대상 파일
+	 * @param preserveFileDate 수정일 설정 플래그
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveFile(File srcFile, File destFile, boolean preserveFileDate) {
+
+		Result result = Result.EMPTY;
+		
+		if (!srcFile.exists()) {
+			return buildFailResult(result, srcFile + "가 존재하지 않습니다.");
+		}
+
+		if (isNotFile(srcFile)) {
+			return buildFailResult(result, srcFile + "는 파일이 아닙니다.");
+		}
+
+		if (destFile.exists()) {
+			
+			result = deleteFile(destFile);
+			
+			if (result == Result.FAIL) {
+				return buildFailResult(result, destFile + " 파일 삭제중에 에러가 발생하였습니다.");
+			}
+		}
+		
+		result = copyFile(srcFile, destFile, preserveFileDate);
+		
+		if (result == Result.FAIL) {
+			return buildFailResult(result, srcFile + " 파일 복사중에 에러가 발생하였습니다.");
+		}
+            
+		result = deleteFile(srcFile);
+		
+		if (result == Result.FAIL) {
+			return buildFailResult(result, srcFile + " 파일 삭제중에 에러가 발생하였습니다.");
+		}
+		
+		return Result.SUCCESS;
+	}
+	
+	/**
+	 * 원본 파일을 대상 파일 명으로 이동한다.<br>
+	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
+	 * 설정한다.
+	 * 
+	 * @param srcFile  원본 파일
+	 * @param destFile 대상 파일
+	 * @param preserveFileDate 수정일 설정 플래그
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveFile(String srcFile, String destFile, boolean preserveFileDate) {
+		return moveFile(new File(srcFile), new File(destFile), preserveFileDate);
+	}
+	
+	/**
+	 * 원본 파일을 대상 디렉토리 하위로 이동한다.
+	 * 
+	 * @param srcFile 원본 파일
+	 * @param destDir 대상 디렉토리
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveFileToDir(File srcFile, File destDir) {
+		return moveFileToDir(srcFile, destDir, true);
+	}
+	
+	/**
+	 * 원본 파일을 대상 디렉토리 하위로 이동한다.
+	 * 
+	 * @param srcFile 원본 파일
+	 * @param destDir 대상 디렉토리
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveFileToDir(String srcFile, String destDir) {
+		return moveFileToDir(new File(srcFile), new File(destDir), true);
+	}
+	
+	/**
+	 * 원본 파일을 대상 디렉토리 하위로 이동한다.<br>
+	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
+	 * 설정한다.
+	 * 
+	 * @param srcFile 원본 파일
+	 * @param destDir 대상 디렉토리
+	 * @param preserveFileDate 수정일 설정 플래그
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveFileToDir(File srcFile, File destDir, boolean preserveFileDate) {
+
+		Result result = Result.EMPTY;
+		
+		if (isNotFile(srcFile)) {
+			return buildFailResult(result, srcFile + "은 파일이 아닙니다.");
+		}
+		
+		if (FileUtils.notExistsDir(destDir)) {
+			
+			result = createDir(destDir.getAbsolutePath());
+			
+			if (result == Result.FAIL) {
+				return buildFailResult(result, destDir + " 디렉토리 생성 중에 에러가 발생하였습니다.");
+			}
+		}
+
+		if (isNotDir(destDir)) {
+			return buildFailResult(result, srcFile + "는 디렉토리가 아닙니다.");
+		}
+		
+		String destFile = destDir + File.separator + srcFile.getName();
+		
+		result = moveFile(srcFile, new File(destFile), preserveFileDate);
+
+		if (result == Result.FAIL) {
+			return buildFailResult(result, srcFile + " 이동 중에 에러가 발생하였습니다.");
+		}
+		
+		return Result.SUCCESS;
+	}
+	
+	/**
+	 * 원본 파일을 대상 디렉토리 하위로 이동한다.<br>
+	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
+	 * 설정한다.
+	 * 
+	 * @param srcFile 원본 파일
+	 * @param destDir 대상 디렉토리
+	 * @param preserveFileDate 수정일 설정 플래그            
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result moveFileToDir(String srcFile, String destDir, boolean preserveFileDate) {
+		return moveFileToDir(new File(srcFile), new File(destDir), preserveFileDate);
+	}
+	
+	
+
+	/**
+	 * 대상 파일을 FileInputStream으로 반환한다.<br/>
+	 * 
+	 * @param file 대상 파일
+	 * @return 대상 파일에 대한 FileInputStream
+	 */
+	public static FileInputStream openInputStream(File file) {
+
+		if (file.exists()) {
+
+			if (file.isDirectory()) {
+				return null;
+			}
+
+			if (!file.canRead()) {
+				return null;
+			}
+
+		} else {
+			return null;
+		}
+
+		FileInputStream fis = null;
+
+		try {
+			fis = new FileInputStream(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+		return fis;
+	}
+	
+	/**
+	 * 대상 파일을 FileInputStream으로 반환한다.<br/>
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @return 대상 파일에 대한 FileInputStream
+	 */
+	public static FileInputStream openInputStream(String filePath) {
+		return openInputStream(new File(filePath));
+	}
+
+	/**
+	 * 대상 파일을 outputStream으로 반환한다.
+	 * 
+	 * @param file 대상 파일
+	 * @return 대상 파일에 대한 FileOutputStream
+	 */
+	public static FileOutputStream openOutputStream(File file) {
+		return openOutputStream(file, false);
+	}
+	
+	/**
+	 * 대상 파일을 outputStream으로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
+	 * 
+	 * @param file   대상 파일
+	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
+	 * @return 대상 파일에 대한 FileOutputStream
+	 */
+	public static FileOutputStream openOutputStream(File file, boolean append) {
+
+		if (file.exists()) {
+
+			if (file.isDirectory()) {
+				return null;
+			}
+			if (!file.canWrite()) {
+				return null;
+			}
+		} else {
+			File parent = file.getParentFile();
+			if (parent != null) {
+				if (!parent.mkdirs() && !parent.isDirectory()) {
+					return null;
+				}
+			}
+		}
+
+		FileOutputStream fos = null;
+
+		try {
+			fos = new FileOutputStream(file, append);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return fos;
+	}
+	
+	/**
+	 * 대상 파일을 outputStream으로 반환한다.
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @return 대상 파일에 대한 FileOutputStream
+	 */
+	public static FileOutputStream openOutputStream(String filePath) {
+		return openOutputStream(new File(filePath), false);
+	}
+	
+	/**
+	 * 대상 파일을 outputStream으로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @param append   기존 파일에 내용을 덧붙일지에 대한 플래그
+	 * @return 대상 파일에 대한 FileOutputStream
+	 */
+	public static FileOutputStream openOutputStream(String filePath, boolean append) {
+		return openOutputStream(new File(filePath), append);		
+	}
+	
+	/**
+	 * 대상 파일을 FileReader로 반환한다.
+	 * 
+	 * @param file 대상 파일
+	 * @return 대상 파일에 대한 FileReader
+	 */
+	public static FileReader openReader(File file) {
+		
+		if (file.exists()) {
+
+			if (file.isDirectory()) {
+				return null;
+			}
+
+			if (!file.canRead()) {
+				return null;
+			}
+
+		} else {
+			return null;
+		}
+
+		FileReader fileReader = null;
+
+		try {
+			fileReader = new FileReader(file);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return fileReader;
+	}
+	
+	/**
+	 * 대상 파일을 FileReader로 반환한다.
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @return 대상 파일에 대한 FieReader
+	 */
+	public static FileReader openReader(String filePath) {
+		return openReader(new File(filePath));
+	}
+    
+    /**
+	 * 대상 파일을 FileWriter로 반환한다.
+	 * 
+	 * @param file 대상 파일
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static FileWriter openWriter(File file) { 
+		return openWriter(file, false);
+	}
+    
+    /**
+	 * 대상 파일을 FileWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
+	 * 
+	 * @param file 대상 파일
+	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static FileWriter openWriter(File file, boolean append) {
+
+		if (file.exists()) {
+
+			if (file.isDirectory()) {
+				return null;
+			}
+			if (!file.canWrite()) {
+				return null;
+			}
+		} else {
+			
+			File parent = file.getParentFile();
+			
+			if (parent != null) {
+				
+				if (!parent.mkdirs() && !parent.isDirectory()) {
+					return null;
+				}
+			}
+		}
+
+		FileWriter fileWriter = null;
+
+		try {
+			fileWriter = new FileWriter(file, append);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return fileWriter;
+	}
+    
+    /**
+	 * 대상 파일을 FileWriter로 반환한다.
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static FileWriter openWriter(String filePath) { 
+		return openWriter(new File(filePath));
+	}
+    
+    /**
+	 * 대상 파일을 FileWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static FileWriter openWriter(String filePath, boolean append) { 
+		return openWriter(new File(filePath), append);
+	}
+	
+	/**
+	 * 대상 파일을 BufferedWriter로 반환한다.
+	 * 
+	 * @param file 대상 파일
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static BufferedWriter openBufferWriter(File file) { 
+		return openBufferWriter(file, "UTF-8", false);
+	}
+	
+	/**
+	 * 대상 파일을 BufferedWriter로 반환한다.
+	 * 
+	 * @param file 대상 파일
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static BufferedWriter openBufferWriter(File file, String charSet) { 
+		return openBufferWriter(file, charSet, false);
+	}
+    
+    /**
+	 * 대상 파일을 BufferedWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
+	 * 
+	 * @param file 대상 파일
+	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static BufferedWriter openBufferWriter(File file, String charSet, boolean append) {
+
+		if (file.exists()) {
+
+			if (file.isDirectory()) {
+				return null;
+			}
+			
+			if (!file.canWrite()) {
+				return null;
+			}
+			
+		} else {
+			
+			File parent = file.getParentFile();
+			
+			if (parent != null) {
+				
+				if (!parent.mkdirs() && !parent.isDirectory()) {
+					return null;
+				}
+			}
+		}
+		
+		BufferedWriter bufferedWriter = null; 
+		
+		try {
+			bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), charSet));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return bufferedWriter;
+	}
+    
+    /**
+	 * 대상 파일을 BufferedWriter로 반환한다.
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static BufferedWriter openBufferWriter(String filePath) { 
+		return openBufferWriter(new File(filePath), "UTF-8", false);
+	}
+	
+	/**
+	 * 대상 파일을 BufferedWriter로 반환한다.
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static BufferedWriter openBufferWriter(String filePath, String charSet) { 
+		return openBufferWriter(new File(filePath), charSet, false);
+	}
+    
+    /**
+	 * 대상 파일을 BufferedWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static BufferedWriter openBufferWriter(String filePath, boolean append) { 
+		return openBufferWriter(new File(filePath), "UTF-8", append);
+	}
+	
+	/**
+	 * 대상 파일을 BufferedWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
+	 * 
+	 * @param filePath 대상 파일 경로
+	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
+	 * @return 대상 파일에 대한 FileWriter
+	 */
+	public static BufferedWriter openBufferWriter(String filePath, String charSet, boolean append) { 
+		return openBufferWriter(new File(filePath), charSet, append);
+	}
+    
+    /**
+	 * 파일을 읽어 들인 후 바이트 배열로 반환한다.<br/>
+	 * 
+	 * @param file 대상 파일
+	 * @return 원본 파일의 byte[]
+	 */
+	public static byte[] readFileToByteArray(File file) {
+
+		InputStream in = null;
+
+		try {
+			in = openInputStream(file);
+			return IOUtils.toByteArray(in, file.length());
+		} catch (Exception e) {
+			return null;
+		} finally {
+			IOUtils.closeQuietly(in);
+		}
+	}
+    
+    /**
+	 * 파일을 읽어 들인 후 바이트 배열로 반환한다.<br/>
+	 * 
+	 * @param file 대상 파일 경로
+	 * @return 원본 파일의 byte[]
+	 */
+	public static byte[] readFileToByteArray(String file) {
+		return readFileToByteArray(new File(file));
+	}
+	
+    /**
+     * 파일을 읽어 들인 후 지정한 charset으로 인토딩한 문자열을 반환한다.
+     * 
+     * @param file 대상 파일 경로
+     * @param encoding 인코딩할 charset
+     * @return 파일 내용을 지정한 charset으로 인코딩한 문자열
+     */
+    public static String readFileToString(File file, Charset encoding) {
+        
+    	InputStream in = null;
+        in = openInputStream(file);
+        
+        try {
+			return org.apache.commons.io.IOUtils.toString(in, Charsets.toCharset(encoding));
+		} catch (Exception e) {
+			return null;
+		} finally {
+			IOUtils.closeQuietly(in);
+		}
+    }
+    
+    /**
+     * 파일을 읽어 들인 후 지정한 charset으로 인토딩한 문자열을 반환한다.
+     * 
+     * @param file 대상 파일 경로
+     * @param encoding 인코딩할 charset 문자열
+     * @return 파일 내용을 지정한 charset으로 인코딩한 문자열
+     */
+    public static String readFileToString(File file, String encoding) {
+    	return readFileToString(file, Charsets.toCharset(encoding));
+    }
+
+    /**
+     * 파일을 읽어 들인 후 문자열을 반환한다.
+     * 
+     * @param file 대상 파일 경로
+     * @return 파일 내용을 지정한 charset으로 인코딩한 문자열
+     */
+    public static String readFileToString(File file) {
+        return readFileToString(file, Charset.defaultCharset());
+    }
+    
+    /**
+	 * 원본 파일명을 대상 파일 명으로 변경한다.<br />
+	 * 파일변경후 원본 파일 삭제
+	 * 
+	 * @param srcFile  원본 파일
+	 * @param destFile 대상 파일
+	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
+	 */
+	public static Result rename(String srcFile, String destFile) {
+		
+		Result result = Result.EMPTY;
+		
+		if (!existsFile(srcFile)) {
+			return buildFailResult(result, srcFile + "가 존재하지 않습니다.");
+		}
+		
+		if (existsFile(destFile)) {
+			
+			result = deleteFile(destFile);
+
+			if (result == Result.FAIL) {
+				return buildFailResult(result, destFile + " 삭제 중에 에러가 발생하였습니다");
+			}
+		}
+		
+		File file = new File(srcFile);
+		
+		if (!file.renameTo(new File(destFile))) {
+			
+			result = copyFile(srcFile, destFile, false);
+
+			if (result == Result.SUCCESS) {
+				
+				result = deleteFile(srcFile);
+				
+				if (result == Result.FAIL) {
+					deleteFile(destFile);
+				}
+			}
+
+			return result;
+			
+		} else {
+			
+			return Result.SUCCESS;
+		}
+	}
+	
 	public static void main(String[] args) {
 		
 		/*List<File> resultFiles = (List<File>) org.apache.commons.io.FileUtils.listFiles(new File("c:/ePapyrus"), new String[] {"end", "done"},  true);
@@ -1171,900 +2158,5 @@ public final class FileUtils {
 		}
 		
 	}
-	
-	/**
-	 * 원본 디렉토리가 대상 디렉토리 명으로 이동한다.
-	 * 
-	 * @param srcDir
-	 *            원본 디렉토리
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveDir(File srcDir, File destDir) {
-		return moveDir(srcDir, destDir, true);
-	}
-	
-	/**
-	 * 원본 디렉토리가 대상 디렉토리 명으로 이동한다.
-	 * 
-	 * @param srcDir
-	 *            원본 디렉토리
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveDir(String srcDir, String destDir) {
-		return moveDir(srcDir, destDir, true);
-	}
-	
-	/**
-	 * 원본 디렉토리가 대상 디렉토리 명으로 이동한다.<br>
-	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
-	 * 설정한다.
-	 * 
-	 * @param srcDir
-	 *            원본 디렉토리
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @param preserveFileDate
-	 *            수정일 설정 플래그
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveDir(File srcDir, File destDir, boolean preserveFileDate) {
-
-		Status result = Status.EMPTY;
-		
-		if (!srcDir.exists()) {
-			SdpLogger.error("FileUtils-moveDir ERROR: " + srcDir + "가 존재하지 않습니다.", FileUtils.class);
-			return Status.FAIL;
-		}
-
-		if (isNotDir(srcDir)) {
-			SdpLogger.error("FileUtils-moveDir ERROR: " + srcDir + "는 디렉토리가 아닙니다.", FileUtils.class);
-			return Status.FAIL;
-		}
-
-		if (destDir.exists()) {
-			
-			result = deleteDir(destDir);
-			
-			if (result == Status.FAIL) {
-				SdpLogger.error("FileUtils-moveDir ERROR: " + destDir + " 디렉토리 삭제중에 에러가 발생하였습니다.",	FileUtils.class);
-				return result;
-			}
-		}
-		
-		result = copyDir(srcDir, destDir, preserveFileDate);
-		
-		if (result == Status.FAIL) {
-			SdpLogger.error("FileUtils-moveDir ERROR: " + srcDir + " 디렉토리 복사중에 에러가 발생하였습니다.",	FileUtils.class);
-			return result;
-		}
-            
-		result = deleteDir(srcDir);
-		
-		if (result == Status.FAIL) {
-			SdpLogger.error("FileUtils-moveDir ERROR: " + srcDir + " 디렉토리 삭제중에 에러가 발생하였습니다.",	FileUtils.class);
-			return result;
-		}
-		
-		return Status.SUCCESS;
-	}
-	
-	/**
-	 * 원본 디렉토리가 대상 디렉토리 명으로 이동한다.<br>
-	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
-	 * 설정한다.
-	 * 
-	 * @param srcDir
-	 *            원본 디렉토리
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @param preserveFileDate
-	 *            수정일 설정 플래그            
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveDir(String srcDir, String destDir, boolean preserveFileDate) {
-		return moveDir(new File(srcDir), new File(destDir), preserveFileDate);
-	}
-
-	/**
-	 * 원본 디렉토리가 대상 디렉토리 하위로 이동한다.
-	 * 
-	 * @param srcDir
-	 *            원본 디렉토리
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveDirToDir(File srcDir, File destDir) {
-		return moveDirToDir(srcDir, destDir, true);
-	}
-
-	/**
-	 * 원본 디렉토리가 대상 디렉토리 하위로 이동한다.
-	 * 
-	 * @param srcDir
-	 *            원본 디렉토리
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveDirToDir(String srcDir, String destDir) {
-		return moveDirToDir(new File(srcDir), new File(destDir), true);
-	}
-	
-	/**
-	 * 원본 디렉토리가 대상 디렉토리 하위로 이동한다.<br>
-	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
-	 * 설정한다.
-	 * 
-	 * @param srcDir
-	 *            원본 디렉토리
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @param preserveFileDate
-	 *            수정일 설정 플래그
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveDirToDir(File srcDir, File destDir, boolean preserveFileDate) {
-
-		Status result = Status.EMPTY;
-		
-		if (isNotDir(srcDir)) {
-			SdpLogger.error("FileUtils-moveDirToDir ERROR: " + srcDir + "는 디렉토리가 아닙니다.", FileUtils.class);
-			return Status.FAIL;
-		}
-		
-		if (notExistsDir(destDir)) {
-			
-			result = createDir(destDir.getAbsolutePath());
-			
-			if (result == Status.FAIL) {
-				SdpLogger.error("FileUtils-moveDirToDir ERROR: " + destDir + " 디렉토리 생성 중에 에러가 발생하였습니다.",	FileUtils.class);
-				return result;
-			}
-		}
-		
-		if (isNotDir(destDir)) {
-			SdpLogger.error("FileUtils-moveDirToDir ERROR: " + destDir + "는 디렉토리가 아닙니다.", FileUtils.class);
-			return Status.FAIL;
-		}
-		
-		
-		String subDir = destDir.getAbsolutePath() + "/" + srcDir.getName();
-		File destSubDir = new File(subDir);
-
-		if (destSubDir.exists() && destSubDir.isDirectory()) {
-			
-			result = deleteDir(destSubDir);
-			
-			if (result == Status.FAIL) {
-				SdpLogger.error("FileUtils-moveDirToDir ERROR: " + destDir + " 디렉토리 삭제중에 에러가 발생하였습니다.",	FileUtils.class);
-				return result;
-			}
-		}
-
-		if (FileUtils.notExistsDir(subDir)) {
-			
-			result = createDir(subDir);
-			
-			if (result == Status.FAIL) {
-				SdpLogger.error("FileUtils-moveDirToDir ERROR: " + destDir + " 디렉토리 생성 중에 에러가 발생하였습니다.",	FileUtils.class);
-				return result;
-			}
-		}
-		
-		result = moveDir(srcDir, destSubDir, preserveFileDate);
-		
-		if (result == Status.FAIL) {
-			SdpLogger.error("FileUtils-moveDirToDir ERROR: " + srcDir + " 이동 중에 에러가 발생하였습니다.",	FileUtils.class);
-			return result;
-		}
-
-		return Status.SUCCESS;
-	}
-
-	/**
-	 * 원본 디렉토리가 대상 디렉토리 하위로 이동한다.<br>
-	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
-	 * 설정한다.
-	 * 
-	 * @param srcDir
-	 *            원본 디렉토리
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @param preserveFileDate
-	 *            수정일 설정 플래그
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveDirToDir(String srcDir, String destDir, boolean preserveFileDate) {
-		return moveDirToDir(new File(srcDir), new File(destDir), preserveFileDate);
-	}
-	
-	/**
-	 * 원본 파일을 대상 파일 명으로 이동한다.
-	 * 
-	 * @param srcFile
-	 *            원본 파일
-	 * @param destFile
-	 *            대상 파일
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveFile(File srcFile, File destFile) {
-		return moveFile(srcFile, destFile, true);
-	}
-	
-	/**
-	 * 원본 파일을 대상 파일 명으로 이동한다.
-	 * 
-	 * @param srcFile
-	 *            원본 파일
-	 * @param destFile
-	 *            대상 파일
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveFile(String srcFile, String destFile) {
-		return moveFile(new File(srcFile), new File(destFile), true);
-	}
-	
-	/**
-	 * 원본 파일을 대상 파일 명으로 이동한다.<br>
-	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
-	 * 설정한다.
-	 * 
-	 * @param srcFile
-	 *            원본 파일
-	 * @param destFile
-	 *            대상 파일
-	 * @param preserveFileDate
-	 *            수정일 설정 플래그
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveFile(File srcFile, File destFile, boolean preserveFileDate) {
-
-		Status result = Status.EMPTY;
-		
-		if (!srcFile.exists()) {
-			SdpLogger.error("FileUtils-moveFile ERROR: " + srcFile + "가 존재하지 않습니다.", FileUtils.class);
-			return Status.FAIL;
-		}
-
-		if (isNotFile(srcFile)) {
-			SdpLogger.error("FileUtils-moveFile ERROR: " + srcFile + "는 파일이 아닙니다.", FileUtils.class);
-			return Status.FAIL;
-		}
-
-		if (destFile.exists()) {
-			
-			result = deleteFile(destFile);
-			
-			if (result == Status.FAIL) {
-				SdpLogger.error("FileUtils-moveFile ERROR: " + destFile + " 파일 삭제중에 에러가 발생하였습니다.",	FileUtils.class);
-				return result;
-			}
-		}
-		
-		result = copyFile(srcFile, destFile, preserveFileDate);
-		
-		if (result == Status.FAIL) {
-			SdpLogger.error("FileUtils-moveFile ERROR: " + srcFile + " 파일 복사중에 에러가 발생하였습니다.",	FileUtils.class);
-			return result;
-		}
-            
-		result = deleteFile(srcFile);
-		
-		if (result == Status.FAIL) {
-			SdpLogger.error("FileUtils-moveFile ERROR: " + srcFile + " 파일 삭제중에 에러가 발생하였습니다.",	FileUtils.class);
-			return result;
-		}
-		
-		return Status.SUCCESS;
-	}
-	
-	/**
-	 * 원본 파일을 대상 파일 명으로 이동한다.<br>
-	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
-	 * 설정한다.
-	 * 
-	 * @param srcFile
-	 *            원본 파일
-	 * @param destFile
-	 *            대상 파일
-	 * @param preserveFileDate
-	 *            수정일 설정 플래그
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveFile(String srcFile, String destFile, boolean preserveFileDate) {
-		return moveFile(new File(srcFile), new File(destFile), preserveFileDate);
-	}
-	
-	/**
-	 * 원본 파일을 대상 디렉토리 하위로 이동한다.
-	 * 
-	 * @param srcFile
-	 *            원본 파일
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveFileToDir(File srcFile, File destDir) {
-		return moveFileToDir(srcFile, destDir, true);
-	}
-	
-	/**
-	 * 원본 파일을 대상 디렉토리 하위로 이동한다.
-	 * 
-	 * @param srcFile
-	 *            원본 파일
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveFileToDir(String srcFile, String destDir) {
-		return moveFileToDir(new File(srcFile), new File(destDir), true);
-	}
-	
-	/**
-	 * 원본 파일을 대상 디렉토리 하위로 이동한다.<br>
-	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
-	 * 설정한다.
-	 * 
-	 * @param srcFile
-	 *            원본 파일
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @param preserveFileDate
-	 *            수정일 설정 플래그
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveFileToDir(File srcFile, File destDir, boolean preserveFileDate) {
-
-		if (isNotFile(srcFile)) {
-			SdpLogger.error("FileUtils-moveFileToDir ERROR: " + srcFile + "은 파일이 아닙니다.", FileUtils.class);
-			return Status.FAIL;
-		}
-		
-		Status result = Status.EMPTY;
-		
-		if (FileUtils.notExistsDir(destDir)) {
-			
-			result = createDir(destDir.getAbsolutePath());
-			
-			if (result == Status.FAIL) {
-				SdpLogger.error("FileUtils-moveFileToDir ERROR: " + destDir + " 디렉토리 생성 중에 에러가 발생하였습니다.",	FileUtils.class);
-				return result;
-			}
-		}
-
-		if (isNotDir(destDir)) {
-			SdpLogger.error("FileUtils-moveFileToDir ERROR: " + srcFile + "는 디렉토리가 아닙니다.", FileUtils.class);
-			return Status.FAIL;
-		}
-		
-		String destFile = destDir + File.separator + srcFile.getName();
-		
-		result = moveFile(srcFile, new File(destFile), preserveFileDate);
-
-		if (result == Status.FAIL) {
-			SdpLogger.error("FileUtils-moveFileToDir ERROR: " + srcFile + " 이동 중에 에러가 발생하였습니다.",	FileUtils.class);
-			return result;
-		}
-		
-		return Status.SUCCESS;
-	}
-	
-	/**
-	 * 원본 파일을 대상 디렉토리 하위로 이동한다.<br>
-	 * preserveFileDate가 true면 원본디렉토리의 파일 최종 수정일을 그대로 사용하고 false면 현재 일자를 최종 수정일로
-	 * 설정한다.
-	 * 
-	 * @param srcFile
-	 *            원본 파일
-	 * @param destDir
-	 *            대상 디렉토리
-	 * @param preserveFileDate
-	 *            수정일 설정 플래그            
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status moveFileToDir(String srcFile, String destDir, boolean preserveFileDate) {
-		return moveFileToDir(new File(srcFile), new File(destDir), preserveFileDate);
-	}
-	
-	public static boolean notExistsDir(File dir) {
-		return !existsDir(dir);
-	}
-	
-	public static boolean notExistsDir(String dir) {
-		return !existsDir(new File(dir));
-	}
-
-	public static boolean notExistsFile(File file) {
-		return !existsFile(file);
-	}
-	
-	public static boolean notExistsFile(String file) {
-		return !existsFile(new File(file));
-	}
-
-	/**
-	 * 대상 파일을 FileInputStream으로 반환한다.<br/>
-	 * 
-	 * @param file
-	 *            대상 파일
-	 * @return 대상 파일에 대한 FileInputStream
-	 */
-	public static FileInputStream openInputStream(File file) {
-
-		if (file.exists()) {
-
-			if (file.isDirectory()) {
-				SdpLogger.error("FileUtils-openInputStream ERROR: " + file + "이 존재하나 디렉토리입니다.", FileUtils.class);
-				return null;
-			}
-
-			if (!file.canRead()) {
-				SdpLogger.error("FileUtils-openInputStream ERROR: " + file + "은 읽을수 없습니다.", FileUtils.class);
-				return null;
-			}
-
-		} else {
-			SdpLogger.error("FileUtils-openInputStream ERROR: " + file + "이 존재하지 않습니다.", FileUtils.class);
-			return null;
-		}
-
-		FileInputStream fis = null;
-
-		try {
-			fis = new FileInputStream(file);
-		} catch (Exception e) {
-			SdpLogger.error("FileUtils-openInputStream ERROR: " + e.getMessage(), FileUtils.class);
-		}
-
-		return fis;
-	}
-	
-	/**
-	 * 대상 파일을 FileInputStream으로 반환한다.<br/>
-	 * 
-	 * @param filePath
-	 *            대상 파일 경로
-	 * @return 대상 파일에 대한 FileInputStream
-	 */
-	public static FileInputStream openInputStream(String filePath) {
-		return openInputStream(new File(filePath));
-	}
-
-	/**
-	 * 대상 파일을 outputStream으로 반환한다.
-	 * 
-	 * @param file
-	 *            대상 파일
-	 * @return 대상 파일에 대한 FileOutputStream
-	 */
-	public static FileOutputStream openOutputStream(File file) {
-		return openOutputStream(file, false);
-	}
-	
-	/**
-	 * 대상 파일을 outputStream으로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
-	 * 
-	 * @param file
-	 *            대상 파일
-	 * @param append
-	 *            기존 파일에 내용을 덧붙일지에 대한 플래그
-	 * @return 대상 파일에 대한 FileOutputStream
-	 */
-	public static FileOutputStream openOutputStream(File file, boolean append) {
-
-		if (file.exists()) {
-
-			if (file.isDirectory()) {
-				SdpLogger.error("FileUtils-openOutputStream ERROR: " + file	+ "이 존재하나 디렉토리입니다.", FileUtils.class);
-				return null;
-			}
-			if (!file.canWrite()) {
-				SdpLogger.error("FileUtils-openOutputStream ERROR: " + file	+ "은 쓸수 없습니다.", FileUtils.class);
-				return null;
-			}
-		} else {
-			File parent = file.getParentFile();
-			if (parent != null) {
-				if (!parent.mkdirs() && !parent.isDirectory()) {
-					SdpLogger.error("FileUtils-openOutputStream ERROR: Directory '"	+ parent + "' 생성에 실패하였습니다.",
-							FileUtils.class);
-					return null;
-				}
-			}
-		}
-
-		FileOutputStream fos = null;
-
-		try {
-			fos = new FileOutputStream(file, append);
-		} catch (Exception e) {
-			SdpLogger.error("FileUtils-openOutputStream ERROR: " + e.getMessage(), FileUtils.class);
-		}
-		return fos;
-	}
-	
-	/**
-	 * 대상 파일을 outputStream으로 반환한다.
-	 * 
-	 * @param filePath
-	 *            대상 파일 경로
-	 * @return 대상 파일에 대한 FileOutputStream
-	 */
-	public static FileOutputStream openOutputStream(String filePath) {
-		return openOutputStream(new File(filePath), false);
-	}
-	
-	/**
-	 * 대상 파일을 outputStream으로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
-	 * 
-	 * @param filePath
-	 *            대상 파일 경로
-	 * @param append
-	 *            기존 파일에 내용을 덧붙일지에 대한 플래그
-	 * @return 대상 파일에 대한 FileOutputStream
-	 */
-	public static FileOutputStream openOutputStream(String filePath, boolean append) {
-		return openOutputStream(new File(filePath), append);		
-	}
-	
-	/**
-	 * 대상 파일을 FileReader로 반환한다.
-	 * 
-	 * @param file 대상 파일
-	 * @return 대상 파일에 대한 FileReader
-	 */
-	public static FileReader openReader(File file) {
-		
-		if (file.exists()) {
-
-			if (file.isDirectory()) {
-				SdpLogger.error("FileUtils-openReader ERROR: " + file + "이 존재하나 디렉토리입니다.", FileUtils.class);
-				return null;
-			}
-
-			if (!file.canRead()) {
-				SdpLogger.error("FileUtils-openReader ERROR: " + file + "은 읽을수 없습니다.", FileUtils.class);
-				return null;
-			}
-
-		} else {
-			SdpLogger.error("FileUtils-openReader ERROR: " + file + "이 존재하지 않습니다.", FileUtils.class);
-			return null;
-		}
-
-		FileReader fileReader = null;
-
-		try {
-			fileReader = new FileReader(file);
-		} catch (Exception e) {
-			SdpLogger.error("FileUtils-openReader ERROR: " + e.getMessage(), FileUtils.class);
-		}
-
-		return fileReader;
-	}
-	
-	/**
-	 * 대상 파일을 FileReader로 반환한다.
-	 * 
-	 * @param filePath 대상 파일 경로
-	 * @return 대상 파일에 대한 FieReader
-	 */
-	public static FileReader openReader(String filePath) {
-		return openReader(new File(filePath));
-	}
-    
-    /**
-	 * 대상 파일을 FileWriter로 반환한다.
-	 * 
-	 * @param file 대상 파일
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static FileWriter openWriter(File file) { 
-		return openWriter(file, false);
-	}
-    
-    /**
-	 * 대상 파일을 FileWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
-	 * 
-	 * @param file 대상 파일
-	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static FileWriter openWriter(File file, boolean append) {
-
-		if (file.exists()) {
-
-			if (file.isDirectory()) {
-				SdpLogger.error("FileUtils-openWriter ERROR: " + file	+ "이 존재하나 디렉토리입니다.", FileUtils.class);
-				return null;
-			}
-			if (!file.canWrite()) {
-				SdpLogger.error("FileUtils-openWriter ERROR: " + file	+ "은 쓸수 없습니다.", FileUtils.class);
-				return null;
-			}
-		} else {
-			File parent = file.getParentFile();
-			if (parent != null) {
-				if (!parent.mkdirs() && !parent.isDirectory()) {
-					SdpLogger.error("FileUtils-openWriter ERROR: Directory '"	+ parent + "' 생성에 실패하였습니다.",
-							FileUtils.class);
-					return null;
-				}
-			}
-		}
-
-		FileWriter fileWriter = null;
-
-		try {
-			fileWriter = new FileWriter(file, append);
-		} catch (Exception e) {
-			SdpLogger.error("FileUtils-openWriter ERROR: " + e.getMessage(), FileUtils.class);
-		}
-		return fileWriter;
-	}
-    
-    /**
-	 * 대상 파일을 FileWriter로 반환한다.
-	 * 
-	 * @param filePath 대상 파일 경로
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static FileWriter openWriter(String filePath) { 
-		return openWriter(new File(filePath));
-	}
-    
-    /**
-	 * 대상 파일을 FileWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
-	 * 
-	 * @param filePath 대상 파일 경로
-	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static FileWriter openWriter(String filePath, boolean append) { 
-		return openWriter(new File(filePath), append);
-	}
-	
-	/**
-	 * 대상 파일을 BufferedWriter로 반환한다.
-	 * 
-	 * @param file 대상 파일
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static BufferedWriter openBufferWriter(File file) { 
-		return openBufferWriter(file, "UTF-8", false);
-	}
-	
-	/**
-	 * 대상 파일을 BufferedWriter로 반환한다.
-	 * 
-	 * @param file 대상 파일
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static BufferedWriter openBufferWriter(File file, String charSet) { 
-		return openBufferWriter(file, charSet, false);
-	}
-    
-    /**
-	 * 대상 파일을 BufferedWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
-	 * 
-	 * @param file 대상 파일
-	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static BufferedWriter openBufferWriter(File file, String charSet, boolean append) {
-
-		if (file.exists()) {
-
-			if (file.isDirectory()) {
-				SdpLogger.error("FileUtils-openWriter ERROR: " + file	+ "이 존재하나 디렉토리입니다.", FileUtils.class);
-				return null;
-			}
-			
-			if (!file.canWrite()) {
-				SdpLogger.error("FileUtils-openWriter ERROR: " + file	+ "은 쓸수 없습니다.", FileUtils.class);
-				return null;
-			}
-			
-		} else {
-			
-			File parent = file.getParentFile();
-			
-			if (parent != null) {
-				
-				if (!parent.mkdirs() && !parent.isDirectory()) {
-					SdpLogger.error("FileUtils-openWriter ERROR: Directory '"	+ parent + "' 생성에 실패하였습니다.",
-							FileUtils.class);
-					return null;
-				}
-			}
-		}
-		
-		BufferedWriter bufferedWriter = null; 
-		
-		try {
-			bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file), charSet));
-		} catch (Exception e) {
-			SdpLogger.error("FileUtils-openWriter ERROR: " + e.getMessage(), FileUtils.class);
-		}
-		
-		return bufferedWriter;
-	}
-    
-    /**
-	 * 대상 파일을 BufferedWriter로 반환한다.
-	 * 
-	 * @param filePath 대상 파일 경로
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static BufferedWriter openBufferWriter(String filePath) { 
-		return openBufferWriter(new File(filePath), "UTF-8", false);
-	}
-	
-	/**
-	 * 대상 파일을 BufferedWriter로 반환한다.
-	 * 
-	 * @param filePath 대상 파일 경로
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static BufferedWriter openBufferWriter(String filePath, String charSet) { 
-		return openBufferWriter(new File(filePath), charSet, false);
-	}
-    
-    /**
-	 * 대상 파일을 BufferedWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
-	 * 
-	 * @param filePath 대상 파일 경로
-	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static BufferedWriter openBufferWriter(String filePath, boolean append) { 
-		return openBufferWriter(new File(filePath), "UTF-8", append);
-	}
-	
-	/**
-	 * 대상 파일을 BufferedWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
-	 * 
-	 * @param filePath 대상 파일 경로
-	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
-	 * @return 대상 파일에 대한 FileWriter
-	 */
-	public static BufferedWriter openBufferWriter(String filePath, String charSet, boolean append) { 
-		return openBufferWriter(new File(filePath), charSet, append);
-	}
-    
-    /**
-	 * 파일을 읽어 들인 후 바이트 배열로 반환한다.<br/>
-	 * 
-	 * @param file 대상 파일
-	 * @return 원본 파일의 byte[]
-	 */
-	public static byte[] readFileToByteArray(File file) {
-
-		InputStream in = null;
-
-		try {
-			in = openInputStream(file);
-			return IOUtils.toByteArray(in, file.length());
-		} catch (Exception e) {
-			SdpLogger.error("FileUtils-readFileToByteArray ERROR: " + e.getMessage(), FileUtils.class);
-			return null;
-		} finally {
-			IOUtils.closeQuietly(in);
-		}
-	}
-    
-    /**
-	 * 파일을 읽어 들인 후 바이트 배열로 반환한다.<br/>
-	 * 
-	 * @param file 대상 파일 경로
-	 * @return 원본 파일의 byte[]
-	 */
-	public static byte[] readFileToByteArray(String file) {
-		return readFileToByteArray(new File(file));
-	}
-	
-    /**
-     * 파일을 읽어 들인 후 지정한 charset으로 인토딩한 문자열을 반환한다.
-     * 
-     * @param file 대상 파일 경로
-     * @param encoding 인코딩할 charset
-     * @return 파일 내용을 지정한 charset으로 인코딩한 문자열
-     */
-    public static String readFileToString(File file, Charset encoding) {
-        
-    	InputStream in = null;
-        in = openInputStream(file);
-        
-        try {
-			return org.apache.commons.io.IOUtils.toString(in, Charsets.toCharset(encoding));
-		} catch (Exception e) {
-			SdpLogger.error("FileUtils-readFileToString ERROR: " + e.getMessage(), FileUtils.class);
-			return null;
-		} finally {
-			IOUtils.closeQuietly(in);
-		}
-    }
-    
-    /**
-     * 파일을 읽어 들인 후 지정한 charset으로 인토딩한 문자열을 반환한다.
-     * 
-     * @param file 대상 파일 경로
-     * @param encoding 인코딩할 charset 문자열
-     * @return 파일 내용을 지정한 charset으로 인코딩한 문자열
-     */
-    public static String readFileToString(File file, String encoding) {
-    	return readFileToString(file, Charsets.toCharset(encoding));
-    }
-
-    /**
-     * 파일을 읽어 들인 후 문자열을 반환한다.
-     * 
-     * @param file 대상 파일 경로
-     * @return 파일 내용을 지정한 charset으로 인코딩한 문자열
-     */
-    public static String readFileToString(File file) {
-        return readFileToString(file, Charset.defaultCharset());
-    }
-    
-    /**
-	 * 원본 파일명을 대상 파일 명으로 변경한다.<br />
-	 * 파일변경후 원본 파일 삭제
-	 * 
-	 * @param srcFile
-	 *            원본 파일
-	 * @param destFile
-	 *            대상 파일
-	 * @return 성공하면 enum 타입의 Result.SUCCESS를 그렇지 않으면 Result.FAIL을 반환
-	 */
-	public static Status rename(String srcFile, String destFile) {
-		
-		if (!existsFile(srcFile)) {
-			SdpLogger.error("FileUtils-rename ERROR: " + srcFile + "가 존재하지 않습니다.", FileUtils.class);
-			return Status.FAIL;
-		}
-		
-		Status result = Status.EMPTY;
-		
-		if (existsFile(destFile)) {
-			
-			result = deleteFile(destFile);
-
-			if (result != Status.SUCCESS) {
-				
-				SdpLogger.error("FileUtils-rename ERROR: " + destFile + " 삭제 중에 에러가 발생하였습니다", FileUtils.class);
-				return Status.FAIL;
-			}
-		}
-		
-		File file = new File(srcFile);
-		
-		if (!file.renameTo(new File(destFile))) {
-			
-			result = copyFile(srcFile, destFile, false);
-
-			if (result == Status.SUCCESS) {
-				
-				result = deleteFile(srcFile);
-				
-				if (result == Status.FAIL) {
-					deleteFile(destFile);
-				}
-			}
-
-			return result;
-			
-		} else {
-			
-			return Status.SUCCESS;
-		}
-	}
-	
-	
 	
 }

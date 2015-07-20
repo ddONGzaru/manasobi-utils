@@ -7,7 +7,7 @@ package io.manasobi.exception;
  * @since 1.0.0
  *
  */
-public class CryptoUtilsException extends Exception {
+public class CryptoUtilsException extends RuntimeException {
 
 	private static final long serialVersionUID = -2674914958898002810L;
 

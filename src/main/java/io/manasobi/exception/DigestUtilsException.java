@@ -7,7 +7,7 @@ package io.manasobi.exception;
  * @since 1.0.0
  *
  */
-public class DigestUtilsException extends Exception {
+public class DigestUtilsException extends RuntimeException {
 
 	private static final long serialVersionUID = -535743920065580694L;
 

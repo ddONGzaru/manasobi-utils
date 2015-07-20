@@ -1116,7 +1116,7 @@ public final class DateUtils {
     }
     
     /**
-     * MONGODB에서 사용되는 ISODATE형의 일자를 yyyy-MM-dd HH:mm:ss 형식의 일자로 변환하여 반환한다.
+     * MongoDB에서 사용되는 ISODATE형의 일자를 yyyy-MM-dd HH:mm:ss 형식의 일자로 변환하여 반환한다.
      * 
      * @param isoDate ISO형 Date
      * @return yyyy-MM-dd HH:mm:ss 형식으로 변환된 일자
