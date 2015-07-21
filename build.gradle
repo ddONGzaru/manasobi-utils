@@ -3,6 +3,10 @@ buildscript {
         springBootVersion = '1.2.5.RELEASE'
     }
     repositories {
+		maven {
+			url "https://plugins.gradle.org/m2/"
+		  }
+		jcenter()
         mavenCentral()
     }
     dependencies {
@@ -16,12 +20,10 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot' 
 apply plugin: 'io.spring.dependency-management'
+//apply plugin: 'eu.appsatori.fatjar'
 apply from:   'dependencies.gradle'
 
-jar {
-    baseName = 'demo'
-    version = '0.0.1-SNAPSHOT'
-}
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
@@ -38,4 +40,50 @@ eclipse {
 
 task wrapper(type: Wrapper) {
     gradleVersion = '2.3'
+}
+
+version = '1.0.0'
+
+configurations{
+	provided
+}
+
+task fatJar(type: Jar) {
+	
+	manifest {
+		attributes 'Implementation-Title': 'manasobi-utils',
+			'Implementation-Version': version
+			//'Main-Class': 'com.mkyong.DateUtils'
+	}
+	
+	dependsOn configurations.runtime
+	
+    from {
+        (configurations.runtime - configurations.provided).collect {
+            it.isDirectory() ? it : zipTree(it)
+        }
+    } {
+        exclude "antlr/**/"
+        exclude "ch/**/"
+        exclude "eu/**/"
+        exclude "groovy/**/"
+        exclude "groovyjarjarantlr/**/"
+        exclude "groovyjarjarasm/**/"
+        exclude "groovyjarjarcommonscli/**/"
+        exclude "org/aopalliance/**/"
+        exclude "org/codehaus/**/"
+        exclude "org/example/**/"
+        exclude "org/slf4j/**/"
+        exclude "org/springframework/**/"
+        exclude "org/yaml/**/"
+        exclude "META-INF/**"
+        exclude "favicon.ico"
+        exclude "overview.html"
+    }    
+    with jar
+}
+
+task sourcesJar(type: Jar, dependsOn: fatJar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
 }
