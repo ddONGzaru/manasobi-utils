@@ -23,7 +23,11 @@ apply plugin: 'spring-boot'
 apply plugin: 'io.spring.dependency-management'
 //apply plugin: 'eu.appsatori.fatjar'
 apply from:   'dependencies.gradle'
+
 apply plugin: "jacoco"
+apply plugin: 'findbugs'
+apply plugin: 'checkstyle'
+//apply plugin: 'pmd'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -118,3 +122,71 @@ test {
         append = false
     }
 }
+
+findbugs {
+	ignoreFailures = true
+}
+
+checkstyle {
+
+	println rootDir
+	configFile = new File(rootDir, "config/manasobi-checkstyle.xml")
+	ignoreFailures = true
+}
+
+
+
+/*
+
+pmd {
+	ruleSets = ["basic", "braces", "design"]
+	ignoreFailures = true
+}
+
+jacoco {
+	toolVersion = "0.6.2.201302030002"
+	reportsDir = file("$buildDir/customJacocoReportDir")
+}
+
+test {
+	jacoco {
+		append = false
+		destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+		classDumpFile = file("$buildDir/jacoco/classpathdumps")
+	}
+}
+
+jacocoTestReport {
+	group = "Reporting"
+	description = "Generate Jacoco coverage reports after running tests."
+	reports {
+		xml{
+			enabled true
+			destination "${buildDir}/reports/jacoco/jacoco.xml"
+		}
+		csv.enabled false
+		html{
+			enabled true
+			destination "${buildDir}/jacocoHtml"
+		}
+	}
+	additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
+}
+   
+tasks.withType(Compile) {
+	options.debug = true
+	options.compilerArgs = ["-g"]
+}
+   
+*/
+
+
+
+
+
+
+
+
+
+
+
