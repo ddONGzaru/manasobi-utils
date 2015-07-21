@@ -35,7 +35,6 @@ public final class DigestUtils {
 	 * 
 	 * @param str         인코딩할 문자열
 	 * @param charsetName 인코딩시 사용할 캐릭터셋
-	 * 
 	 * @return 인코딩된 문자열
 	 */
 	public static String encodeCharset(String str, String charsetName) throws DigestUtilsException {
@@ -55,7 +54,6 @@ public final class DigestUtils {
 	 * 입력받은 문자열을 Base64를 이용하여 인코딩한다.
 	 * 
 	 * @param str	    Base64 인코딩할 문자열
-	 * 
 	 * @return Base64로 인코딩된 문자열
 	 */
 	public static String encodeBase64String(String str) {
@@ -66,7 +64,6 @@ public final class DigestUtils {
 	 * 입력받은 바이너리 데이터를 Base64를 이용하여 인코딩한다.
 	 * 
 	 * @param binaryData Base64 인코딩할 binary data
-	 * 
 	 * @return Base64로 인코딩된 문자열
 	 */
 	public static String encodeBase64String(byte[] binaryData) {
@@ -77,7 +74,6 @@ public final class DigestUtils {
 	 * 입력받은 문자열을 Base64를 이용하여 인코딩한다.
 	 * 
 	 * @param str       Base64 인코딩할 문자열
-	 * 
 	 * @return Base64로 인코딩된 byte array
 	 */
 	public static byte[] encodeBase64ByteArray(String str) {
@@ -88,7 +84,6 @@ public final class DigestUtils {
 	 * 입력받은 바이너리 데이터를 Base64를 이용하여 인코딩한다.
 	 * 
 	 * @param binaryData Base64 인코딩할 binary data
-	 * 
 	 * @return Base64로 인코딩된 byte array
 	 */
 	public static byte[] encodeBase64ByteArray(byte[] binaryData) {
@@ -99,7 +94,6 @@ public final class DigestUtils {
 	 * 입력받은 문자열을 Base64를 이용하여 디코딩한다.
 	 * 
 	 * @param str Base64 디코딩할 문자열
-	 * 
 	 * @return Base64로 디코딩된 문자열
 	 */
 	public static String decodeBase64String(String str) {
@@ -110,7 +104,6 @@ public final class DigestUtils {
 	 * 입력받은 binary data를 Base64를 이용하여 디코딩한다.
 	 * 
 	 * @param binaryData Base64 디코딩할 binary data
-	 * 
 	 * @return Base64로 디코딩된 문자열
 	 */
 	public static String decodeBase64String(byte[] binaryData) {
@@ -121,7 +114,6 @@ public final class DigestUtils {
 	 * 입력받은 문자열을 Base64를 이용하여 디코딩한다.
 	 * 
 	 * @param str Base64 디코딩할 문자열
-	 * 
 	 * @return Base64로 디코딩된 byte array
 	 */
 	public static byte[] decodeBase64ByteArray(String str) {
@@ -132,7 +124,6 @@ public final class DigestUtils {
 	 * 입력받은 binary data를 Base64를 이용하여 디코딩한다.
 	 * 
 	 * @param binaryData Base64 디코딩할 binary data
-	 * 
 	 * @return Base64로 디코딩된 byte array
 	 */
 	public static byte[] decodeBase64ByteArray(byte[] binaryData) {
@@ -162,12 +153,11 @@ public final class DigestUtils {
 	
 	/**
 	 * 패스워드를 입력받은 알고리즘을 사용하여 암호화한다.<br>
-	 * 사용 가능한 알고리즘 -> "MD5", "SHA-1", "SHA-256"<br>
-	 * 알고리즘에 의해 암호화된 문자열의 길이 -> MD5: 32자, SHA-1: 40자, SHA-256: 64자
+	 * 사용 가능한 알고리즘 - "MD5", "SHA-1", "SHA-256"<br>
+	 * 알고리즘에 의해 암호화된 문자열의 길이 - MD5: 32자, SHA-1: 40자, SHA-256: 64자
 	 * 
 	 * @param password   암호화할 문자열
-	 * @param algorithm  암호화시 사용할 알고리즘
-	 * 
+	 * @param secure  암호화시 사용할 알고리즘
 	 * @return 알고리즘에 의해 암호화된 문자열
 	 */
 	public static String encodePassword(String password, Secure secure) throws DigestUtilsException {

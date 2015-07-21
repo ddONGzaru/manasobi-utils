@@ -9,11 +9,11 @@ import org.apache.commons.io.IOCase;
 import org.apache.commons.io.filefilter.AbstractFileFilter;
 
 /**
- * DESC : 
  * 
- * @Company ePapyrus, Inc.
+ * FileUtils에서 사용되는 listExcludeFilenamesByWildcard 메소드를 지원하기 위한 헬퍼 유틸.
+ * 
  * @author taewook.jang
- * @Date 2013. 9. 9. 오전 10:11:17
+ * @since 1.0.0
  */
 public class WildcardExcludeFileFilter extends AbstractFileFilter implements Serializable {
 

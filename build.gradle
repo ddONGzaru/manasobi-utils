@@ -16,6 +16,7 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'groovy'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'spring-boot' 
@@ -27,6 +28,23 @@ apply from:   'dependencies.gradle'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
+compileGroovy {
+	sourceCompatibility = 1.8
+	targetCompatibility = 1.8
+}
+
+// source encoding
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+[compileGroovy, compileTestGroovy]*.options*.encoding = 'UTF-8'
+[compileGroovy, compileTestGroovy]*.groovyOptions*.encoding = 'UTF-8'
+
+
+// source sets
+sourceSets {
+	//main { compileClasspath += configurations.providedCompile }
+	test.groovy.srcDirs = ['src/test/java']
+}
+
 repositories {
     mavenCentral()
 }
@@ -36,6 +54,10 @@ eclipse {
          containers.remove('org.eclipse.jdt.launching.JRE_CONTAINER')
          containers 'org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8'
     }
+}
+
+javadoc {
+    options.encoding = "UTF-8"
 }
 
 task wrapper(type: Wrapper) {

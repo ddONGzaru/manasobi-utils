@@ -5,7 +5,7 @@ import java.util.concurrent.TimeUnit;
 import io.manasobi.exception.ThreadUtilsException;
 
 /**
- * 대기시간(sleep)을 지정하기 위해서 사용되는 Thread.sleep은 uncheckedException이다.<br/>
+ * 대기시간(sleep)을 지정하기 위해서 사용되는 Thread.sleep은 uncheckedException이다.<br>
  * 불필요한 try-catch를 생략하기위해 runtimeException으로 감싸는 wrapper 클래스를 제공한다.
  * 
  * @author manasobi

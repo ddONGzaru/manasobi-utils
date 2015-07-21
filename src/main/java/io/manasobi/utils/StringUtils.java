@@ -57,7 +57,7 @@ public final class StringUtils {
 	private static final int HEX_TO_STRING_INT = 16;
 	
 	/**
-	 * 문자열을 "…"가 포함된 지정한 사이즈로 문자열을 축소한다 최대크기는 4보다 커야한다.<br />
+	 * 문자열을 "…"가 포함된 지정한 사이즈로 문자열을 축소한다 최대크기는 4보다 커야한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.abbreviate(null, *)      = null
@@ -78,7 +78,7 @@ public final class StringUtils {
 	}
 	
 	/**
-	 * 문자열을 "…"가 포함된 지정한 사이즈로 문자열을 앞/뒤로 축소한다.<br />
+	 * 문자열을 "…"가 포함된 지정한 사이즈로 문자열을 앞/뒤로 축소한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.abbreviate(null, *, *)                = null
@@ -106,7 +106,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열을 지정한 길이로 중간부터 변환문자로 변환한다.<br />
+	 * 문자열을 지정한 길이로 중간부터 변환문자로 변환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.abbreviateMiddle(null, null, 0)      = null
@@ -126,7 +126,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열중 첫번째 문자를 대문자로 만든다.<br />
+	 * 문자열중 첫번째 문자를 대문자로 만든다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.capitalize(null)  = null
@@ -143,7 +143,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열의 길이가 변환길이가 되도록 문자열 좌우에 공백문자를 우측부터 하나씩 추가한다.<br />
+	 * 문자열의 길이가 변환길이가 되도록 문자열 좌우에 공백문자를 우측부터 하나씩 추가한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.center(null, *)   = null
@@ -163,7 +163,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열의 길이가 변환길이가 되도록 문자열 좌우에 삽입문자를 하나씩 우측부터 추가한다.<br />
+	 * 문자열의 길이가 변환길이가 되도록 문자열 좌우에 삽입문자를 하나씩 우측부터 추가한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.center(null, *, *)     = null
@@ -185,7 +185,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열의 길이가 변환길이가 되도록 문자열 좌우에 삽입문자열을 하나씩 우측부터 추가한다.<br />
+	 * 문자열의 길이가 변환길이가 되도록 문자열 좌우에 삽입문자열을 하나씩 우측부터 추가한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.center(null, *, *)     = null
@@ -209,8 +209,8 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 맨 끝에있는 &quot;<code>\n</code>&quot;,<br />
-	 * &quot;<code>\r</code>&quot;, or &quot;<code>\r\n</code>&quot;을 제거한다.<br />
+	 * 문자열 맨 끝에있는 &quot;<code>\n</code>&quot;,<br>
+	 * &quot;<code>\r</code>&quot;, or &quot;<code>\r\n</code>&quot;을 제거한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.chomp(null)          = null
@@ -234,7 +234,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 맨 끝에 구분자가 있으면 이를 제거한다.<br />
+	 * 문자열 맨 끝에 구분자가 있으면 이를 제거한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.chomp(null, *)         = null
@@ -258,7 +258,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 맨 끝에있는 문자 하나를 제거한다.<br />
+	 * 문자열 맨 끝에있는 문자 하나를 제거한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.chop(null)          = null
@@ -320,9 +320,9 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 검색문자가 포함하고 있는지 확인한다.<br />
+	 * 문자열 내에서 검색문자가 포함하고 있는지 확인한다.<br>
 	 * 
-	 * <code>null</code> 또는 공백일경우 <code>false</code>를 반환한다.<br />
+	 * <code>null</code> 또는 공백일경우 <code>false</code>를 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.contains(null, *)    = false
@@ -341,9 +341,9 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 검색문자열이 포함하고 있는지 확인한다.<br />
+	 * 문자열 내에서 검색문자열이 포함하고 있는지 확인한다.<br>
 	 * 
-	 * <code>null</code>일경우 <code>false</code>를 반환한다.<br />
+	 * <code>null</code>일경우 <code>false</code>를 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.contains(null, *)     = false
@@ -364,9 +364,9 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 검색문자열이 대소문자를 무시하고 포함하고 있는지 확인한다.<br />
+	 * 문자열 내에서 검색문자열이 대소문자를 무시하고 포함하고 있는지 확인한다.<br>
 	 * 
-	 * <code>null</code>일경우 <code>false</code>를 반환한다.<br />
+	 * <code>null</code>일경우 <code>false</code>를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.containsIgnoreCase(null, *) = false
@@ -526,7 +526,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열중에 검색문자열이 포함되어있는 갯수를 반환한다.<br />
+	 * 문자열중에 검색문자열이 포함되어있는 갯수를 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.countMatches(null, *)       = 0
@@ -597,8 +597,8 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 <code>null</code> 또는 공백 또는 공백문자 이면 <code>defaultStr</code>을 반환하고<br />
-	 * 아니면 <code>str</code>을 반환한다.<br />
+	 * 문자열이 <code>null</code> 또는 공백 또는 공백문자 이면 <code>defaultStr</code>을 반환하고<br>
+	 * 아니면 <code>str</code>을 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.defaultIfBlank(null, "NULL")  = "NULL"
@@ -616,8 +616,8 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 <code>null</code> 또는 공백이면 <code>defaultStr</code>을 반환하고<br />
-	 * 아니면 <code>str</code>을 반환한다.<br />
+	 * 문자열이 <code>null</code> 또는 공백이면 <code>defaultStr</code>을 반환하고<br>
+	 * 아니면 <code>str</code>을 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.defaultIfEmpty(null, "NULL")  = "NULL"
@@ -635,7 +635,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 <code>null</code>이면 공백를 반환하고 아니면 <code>str</code>을 반환한다.<br />
+	 * 문자열이 <code>null</code>이면 공백를 반환하고 아니면 <code>str</code>을 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.defaultString(null)  = ""
@@ -651,8 +651,8 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 <code>null</code>이면 <code>defaultStr</code>을 반환하고<br />
-	 * 아니면 <code>str</code>을 반환한다.<br />
+	 * 문자열이 <code>null</code>이면 <code>defaultStr</code>을 반환하고<br>
+	 * 아니면 <code>str</code>을 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.defaultString(null, "NULL")  = "NULL"
@@ -695,7 +695,7 @@ public final class StringUtils {
 	 * 겹치지 않는 형태로 계산한다. + 따라서, 제거된 후에도 old 패턴은 남아 있을 수 있다.<br><br>
 	 * 
 	 * StringUtils.deletePattern("aababa", "aba")는 "aba"<br>
-	 * StringUtils.deletePattern("zzABCcc", "ABC") => "zzcc"
+	 * StringUtils.deletePattern("zzABCcc", "ABC") - "zzcc"
 	 *
 	 * @param str
 	 *            the source String to search
@@ -708,7 +708,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열중 공백문자가 있으면 모두 제거한다.<br />
+	 * 문자열중 공백문자가 있으면 모두 제거한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.deleteWhitespace(null)         = null
@@ -761,7 +761,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 두문자열를 비교하여 다른부분을 반환한다.<br />
+	 * 두문자열를 비교하여 다른부분을 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.difference(null, null) = null
@@ -783,7 +783,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 검색문자로 끝나는지 확인한다.<br />
+	 * 문자열이 검색문자로 끝나는지 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.endsWith(null, null)      = true
@@ -804,7 +804,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 배열안의 검색문자로 끝나는지 확인한다.<br />
+	 * 문자열이 배열안의 검색문자로 끝나는지 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.endsWithAny(null, null)      = false
@@ -826,7 +826,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 검색문자로 대소문자 구분없이 끝나는지 확인한다.<br />
+	 * 문자열이 검색문자로 대소문자 구분없이 끝나는지 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.endsWithIgnoreCase(null, null)      = true
@@ -847,7 +847,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 두개의 문자열이 같은지 비교한다.<br />
+	 * 두개의 문자열이 같은지 비교한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.equals(null, null)   = true
@@ -866,7 +866,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 두개의 문자열을 영문 대소문자를 무시하고 같은지 비교한다.<br />
+	 * 두개의 문자열을 영문 대소문자를 무시하고 같은지 비교한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.equalsIgnoreCase(null, null)   = true
@@ -885,7 +885,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 두개의 문자열이 다른지 비교한다.<br />
+	 * 두개의 문자열이 다른지 비교한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.notEquals(null, null)   = false
@@ -904,7 +904,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 두개의 문자열을 영문 대소문자를 무시하고 다른지 비교한다.<br />
+	 * 두개의 문자열을 영문 대소문자를 무시하고 다른지 비교한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.notEqIgnoreCase(null, null)   = false
@@ -957,7 +957,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 배열안의 문자열를 비교하여 같은부분의 문자열을 반환한다.<br />
+	 * 배열안의 문자열를 비교하여 같은부분의 문자열을 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.getCommonPrefix(null) = ""
@@ -1035,7 +1035,7 @@ public final class StringUtils {
 
 
 	/**
-	 * 문자열1을 문자열2로 변환하기위해 치환,삽입,삭제하지 않으면 않되는 최소의 문자수를 반환한다.<br />
+	 * 문자열1을 문자열2로 변환하기위해 치환,삽입,삭제하지 않으면 않되는 최소의 문자수를 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.getLevenshteinDistance(null, *)             = IllegalArgumentException
@@ -1081,7 +1081,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 입력된 문자열을 ,(콤마)에 대해서 분리 후 List<String>으로 반환<br><br>
+	 * 입력된 문자열을 ,(콤마)에 대해서 분리 후 List으로 반환<br><br>
 	 *
 	 * @param lst 문자열
 	 * @return ,(콤마)로 분리된 List
@@ -1091,7 +1091,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 입력된 문자열을 주어진 separator에 대해서 분리 후 List<String>으로 반환<br><br>
+	 * 입력된 문자열을 주어진 separator에 대해서 분리 후 List으로 반환<br><br>
 	 *
 	 * StringUtils.getTokens("Anyframe/Java/Test", "/")
 	 *
@@ -1133,7 +1133,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 시작인덱스로부터 첫번째 검색문자의 인덱스를 반환한다.<br />
+	 * 문자열 내에서 시작인덱스로부터 첫번째 검색문자의 인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.indexOf(null, *, *)          = -1
@@ -1154,13 +1154,13 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 시작인덱스로부터 첫번째 검색문자열의 인덱스를 반환한다.<br />
+	 * 문자열 내에서 시작인덱스로부터 첫번째 검색문자열의 인덱스를 반환한다.<br>
 	 *
-	 * Null 문자열은-1을 반환<br />
-	 * 부정적인 시작 위치는 0으로 처리<br />
-	 * 빈 검색 문자열 항상 일치<br />
-	 * 시작 위치가 문자열 길이 보다 큰 일치<br />
-	 * 빈 검색 문자열<br />
+	 * Null 문자열은-1을 반환<br>
+	 * 부정적인 시작 위치는 0으로 처리<br>
+	 * 빈 검색 문자열 항상 일치<br>
+	 * 시작 위치가 문자열 길이 보다 큰 일치<br>
+	 * 빈 검색 문자열<br>
 	 *
 	 * <pre>
 	 * StringUtils.indexOf(null, *, *)          = -1
@@ -1187,12 +1187,12 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 검색문자배열중 포함하고 있는지 검색후<br />
-	 * 검색된 첫번째 인덱스를 반환한다.<br />
+	 * 문자열 내에서 검색문자배열중 포함하고 있는지 검색후<br>
+	 * 검색된 첫번째 인덱스를 반환한다.<br>
 	 * 
-	 * 문자열이 <code>null</code> 일경우 <code>-1</code>을 반환.<br />
-	 * 검색배열이 <code>null</code> 또는 공백배열일경우 <code>-1</code>을 반환.<br />
-	 * 배열내 검색문자열이 공백일경우 <code>0</code>을 반환. <br />
+	 * 문자열이 <code>null</code> 일경우 <code>-1</code>을 반환.<br>
+	 * 검색배열이 <code>null</code> 또는 공백배열일경우 <code>-1</code>을 반환.<br>
+	 * 배열내 검색문자열이 공백일경우 <code>0</code>을 반환. <br>
 	 *
 	 * <pre>
 	 * StringUtils.indexOfAny(null, *)                     = -1
@@ -1216,7 +1216,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 두문자열를 비교하여 다른부분의 인덱스를 반환한다.<br />
+	 * 두문자열를 비교하여 다른부분의 인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.indexOfDifference(null, null) = -1
@@ -1238,7 +1238,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 배열안의 문자열를 비교하여 다른부분의 인덱스를 반환한다.<br />
+	 * 배열안의 문자열를 비교하여 다른부분의 인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.indexOfDifference(null) = -1
@@ -1286,7 +1286,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 시작인덱스로부터 대소문자 구분없이 첫번째 검색문자의 인덱스를 반환한다.<br />
+	 * 문자열 내에서 시작인덱스로부터 대소문자 구분없이 첫번째 검색문자의 인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.indexOfIgnoreCase(null, *, *)          = -1
@@ -1312,7 +1312,7 @@ public final class StringUtils {
 	}
 	
 	/**
-	 * 문자열이 모두 소문자인가를 확인한다.<br />
+	 * 문자열이 모두 소문자인가를 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.isAllLowerCase(null)   = false
@@ -1330,7 +1330,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 모두 대문자인가를 확인한다.<br />
+	 * 문자열이 모두 대문자인가를 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.isAllUpperCase(null)   = false
@@ -1372,7 +1372,7 @@ public final class StringUtils {
 	}
 	
 	/**
-	 * 문자열이 모두 문자 또는 숫자인지 확인한다.<br />
+	 * 문자열이 모두 문자 또는 숫자인지 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.isAlphanumeric(null)   = false
@@ -1392,8 +1392,8 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 모두 문자 또는 숫자 이거나 <br />
-	 * 공백문자인지 확인한다.<br />
+	 * 문자열이 모두 문자 또는 숫자 이거나 <br>
+	 * 공백문자인지 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.isAlphanumericSpace(null)   = false
@@ -1413,10 +1413,10 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 모두 문자 이거나 공백문자인것을 확인한다.<br />
+	 * 문자열이 모두 문자 이거나 공백문자인것을 확인한다.<br>
 	 *
 	 * <code>null</code> will return <code>false</code>
-	 * An empty String (length()=0) will return <code>true</code>.<br />
+	 * An empty String (length()=0) will return <code>true</code>.<br>
 	 *
 	 * <pre>
 	 * StringUtils.isAlphaSpace(null)   = false
@@ -1436,8 +1436,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * printable한 문자열인가를 확인한다.<br />
-	 * 반환치가 「return ch >= 32 && ch < 127」경우 또는 공백문자는 true<br />
+	 * printable한 문자열인가를 확인한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.isAsciiPrintable(null)     = false
@@ -1461,7 +1460,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 빈 공백 또는 NULL인지 확인한다.<br />
+	 * 문자열이 빈 공백 또는 NULL인지 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.isBlank(null)      = true
@@ -1667,7 +1666,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 빈 공백 또는 NULL이 아닌지 확인한다.<br />
+	 * 문자열이 빈 공백 또는 NULL이 아닌지 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.isNotBlank(null)      = false
@@ -1728,7 +1727,7 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-	 * 문자열이 모두 숫자인가를 확인한다.<br />
+	 * 문자열이 모두 숫자인가를 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.isNumeric(null)   = false
@@ -1749,7 +1748,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 숫자 또는 공백문자인가를 확인한다.<br />
+	 * 문자열이 숫자 또는 공백문자인가를 확인한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.isNumericSpace(null)   = false
@@ -1794,7 +1793,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열이 공백 또는 공백문자인가를 확인한다.<br />
+	 * 문자열이 공백 또는 공백문자인가를 확인한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.isWhitespace(null)   = false
@@ -1815,7 +1814,7 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-	 * collection에서 문자열을 읽어와 구분자로 연결시킨다.<br />
+	 * collection에서 문자열을 읽어와 구분자로 연결시킨다.<br>
 	 *
 	 * @param collection Collection
 	 * @param separator 구분자
@@ -1829,7 +1828,7 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-	 * collection에서 문자열을 읽어와 구분자로 연결시킨다.<br />
+	 * collection에서 문자열을 읽어와 구분자로 연결시킨다.<br>
 	 *
 	 * @param collection Collection
 	 * @param separator 구분자
@@ -1841,7 +1840,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * iterator에서 문자열을 읽어와 구분자로 연결시킨다.<br />
+	 * iterator에서 문자열을 읽어와 구분자로 연결시킨다.<br>
 	 * 
 	 * @param iterator Iterator
 	 * @param separator 구분자
@@ -1855,7 +1854,7 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-	 * iterator에서 문자열을 읽어와 구분자로 연결시킨다.<br />
+	 * iterator에서 문자열을 읽어와 구분자로 연결시킨다.<br>
 	 *
 	 * @param iterator Iterator
 	 * @param separator 구분자
@@ -1867,7 +1866,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 배열에서 문자열을 읽어와 모두 연결시킨다.<br />
+	 * 배열에서 문자열을 읽어와 모두 연결시킨다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.join(null)            = null
@@ -1885,7 +1884,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 배열에서 문자열을 읽어와 모두 연결시킨다.<br />
+	 * 배열에서 문자열을 읽어와 모두 연결시킨다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.join(null, *)               = null
@@ -1905,8 +1904,8 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 배열에서 문자열을 읽어와 배열의 시작인덱스부터 끝인덱스전까지 <br />
-	 * 구분자를 사이에두고 연결시킨다.<br />
+	 * 배열에서 문자열을 읽어와 배열의 시작인덱스부터 끝인덱스전까지 <br>
+	 * 구분자를 사이에두고 연결시킨다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.join(null, *)               = null
@@ -1928,7 +1927,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 배열에서 문자열을 읽어와 모두 구분자를 사이에두고 연결시킨다.<br />
+	 * 배열에서 문자열을 읽어와 모두 구분자를 사이에두고 연결시킨다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.join(null, *)                = null
@@ -1949,8 +1948,8 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 배열에서 문자열을 읽어와 배열의 시작인덱스부터 끝인덱스전까지 <br />
-	 * 구분자를 사이에두고 연결시킨다.<br />
+	 * 배열에서 문자열을 읽어와 배열의 시작인덱스부터 끝인덱스전까지 <br>
+	 * 구분자를 사이에두고 연결시킨다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.join(null, *)                = null
@@ -1973,7 +1972,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 마지막 검색문자의 인덱스를 반환한다.<br />
+	 * 문자열 내에서 마지막 검색문자의 인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.lastIndexOf(null, *)         = -1
@@ -1993,7 +1992,7 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-	 * 문자열 내에서 시작인덱스로부터 마지막 검색문자의 인덱스를 반환한다.<br />
+	 * 문자열 내에서 시작인덱스로부터 마지막 검색문자의 인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.lastIndexOf(null, *, *)          = -1
@@ -2016,7 +2015,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 마지막 검색문자열의 인덱스를 반환한다.<br />
+	 * 문자열 내에서 마지막 검색문자열의 인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.lastIndexOf(null, *)          = -1
@@ -2037,7 +2036,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 시작인덱스로부터 앞으로 검색문자열인덱스를 반환한다.<br />
+	 * 문자열 내에서 시작인덱스로부터 앞으로 검색문자열인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.lastIndexOf(null, *, *)          = -1
@@ -2061,12 +2060,12 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 검색문자배열중 포함하고 있는지 검색후<br />
-	 * 최후에 검색된 인덱스를 반환한다.<br />
+	 * 문자열 내에서 검색문자배열중 포함하고 있는지 검색후<br>
+	 * 최후에 검색된 인덱스를 반환한다.<br>
 	 * 
-	 * 문자열이 <code>null</code> 일경우 <code>-1</code>을 반환.<br />
-	 * 검색배열이 <code>null</code> 또는 공백배열일경우 <code>-1</code>을 반환.<br />
-	 * 배열내 검색문자열이 <code>null</code> 또는 공백일경우 <code>-1</code>을 반환. <br />
+	 * 문자열이 <code>null</code> 일경우 <code>-1</code>을 반환.<br>
+	 * 검색배열이 <code>null</code> 또는 공백배열일경우 <code>-1</code>을 반환.<br>
+	 * 배열내 검색문자열이 <code>null</code> 또는 공백일경우 <code>-1</code>을 반환. <br>
 	 *
 	 * <pre>
 	 * StringUtils.lastIndexOfAny(null, *)                   = -1
@@ -2089,7 +2088,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 검색문자열의 대소문자 구분없이 마지막의 해당하는 인덱스를 반환한다.<br />
+	 * 문자열 내에서 검색문자열의 대소문자 구분없이 마지막의 해당하는 인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.lastIndexOfIgnoreCase(null, *)          = -1
@@ -2108,7 +2107,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 시작인덱스로부터 대소문자 구분없이 역으로 검색문자의 첫번째인덱스를 반환한다.<br />
+	 * 문자열 내에서 시작인덱스로부터 대소문자 구분없이 역으로 검색문자의 첫번째인덱스를 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.lastIndexOfIgnoreCase(null, *, *)          = -1
@@ -2134,7 +2133,7 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-	 * 문자열 내에서 뒤에서부터 검색문자열의 n번째 해당하는 인덱스를 반환한다.<br />
+	 * 문자열 내에서 뒤에서부터 검색문자열의 n번째 해당하는 인덱스를 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.lastOrdinalIndexOf(null, *, *)          = -1
@@ -2240,7 +2239,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열을 소문자로 변환한다.<br />
+	 * 문자열을 소문자로 변환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.lowerCase(null)  = null
@@ -2256,7 +2255,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열을 로케일에 맞춰 대문자로 변환한다.<br />
+	 * 문자열을 로케일에 맞춰 대문자로 변환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.lowerCase(null, Locale.ENGLISH)  = null
@@ -2273,7 +2272,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열의 pos 인덱스부터 len 길이만큼의 문자열을 구한다.<br />
+	 * 문자열의 pos 인덱스부터 len 길이만큼의 문자열을 구한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.mid(null, *, *)    = null
@@ -2313,7 +2312,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열중 연속된 공백문자를 한개의 공백문자로 변환후 반환한다.<br />
+	 * 문자열중 연속된 공백문자를 한개의 공백문자로 변환후 반환한다.<br>
 	 * 
 	 * @param str 문자열
 	 * @return 결과문자열, 입력문자열이 null일경우 <code>null</code>
@@ -2377,7 +2376,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 검색문자열의 n번째 해당하는 인덱스를 반환한다.<br />
+	 * 문자열 내에서 검색문자열의 n번째 해당하는 인덱스를 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.ordinalIndexOf(null, *, *)          = -1
@@ -2403,7 +2402,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열의 시작점부터 종료점까지 변환문자로 변환한다.<br />
+	 * 문자열의 시작점부터 종료점까지 변환문자로 변환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.overlay(null, *, *, *)            = null
@@ -2523,7 +2522,7 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-	 * 문자열 내에서 삭제문자가 포함되어있는 부분을 삭제후 반환한다.<br />
+	 * 문자열 내에서 삭제문자가 포함되어있는 부분을 삭제후 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.remove(null, *)       = null
@@ -2541,7 +2540,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 삭제문자열이 포함되어있는 부분을 삭제후 반환한다.<br />
+	 * 문자열 내에서 삭제문자열이 포함되어있는 부분을 삭제후 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.remove(null, *)        = null
@@ -2627,7 +2626,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열의 뒤에서부터 삭제문자열과 같은 부분을 삭제후 나머지를 반환한다.<br /> 
+	 * 문자열의 뒤에서부터 삭제문자열과 같은 부분을 삭제후 나머지를 반환한다.<br> 
 	 *
 	 * <pre>
 	 * StringUtils.removeEnd(null, *)      = null
@@ -2648,7 +2647,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열의 뒤에서부터 삭제문자열과 영문대소문자 구분없이 같은 부분을 삭제후 나머지를 반환한다.<br /> 
+	 * 문자열의 뒤에서부터 삭제문자열과 영문대소문자 구분없이 같은 부분을 삭제후 나머지를 반환한다.<br> 
 	 *
 	 * <pre>
 	 * StringUtils.removeEndIgnoreCase(null, *)      = null
@@ -2671,7 +2670,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열에서 삭제문자열을 삭제한나머지 문자열을 반환한다.<br />
+	 * 문자열에서 삭제문자열을 삭제한나머지 문자열을 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.removeStart(null, *)      = null
@@ -2692,7 +2691,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열의 시작부터 삭제문자열과 영문대소문자 구분없이 같은 부분을 삭제후 나머지를 반환한다.<br /> 
+	 * 문자열의 시작부터 삭제문자열과 영문대소문자 구분없이 같은 부분을 삭제후 나머지를 반환한다.<br> 
 	 *
 	 * <pre>
 	 * StringUtils.removeStartIgnoreCase(null, *)      = null
@@ -2727,7 +2726,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열을 반복횟수만큼 반복하여 반환한다.<br />
+	 * 문자열을 반복횟수만큼 반복하여 반환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.repeat(null, 2) = null
@@ -2747,7 +2746,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열과 구분자를 붙여 반복횟수만큼 반복하여 반환한다.<br />
+	 * 문자열과 구분자를 붙여 반복횟수만큼 반복하여 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.repeat(null, null, 2) = null
@@ -2788,7 +2787,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열 내에서 검색문자열을 검색후 치환최대치 만큼 치환문자열로 치환하여 반환한다.<br />
+	 * 문자열 내에서 검색문자열을 검색후 치환최대치 만큼 치환문자열로 치환하여 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.replace(null, *, *, *)         = null
@@ -2836,7 +2835,7 @@ public final class StringUtils {
 	// Replace, character based
 	//-----------------------------------------------------------------------
 	/**
-	 * 문자열에서 검색문자를 치환문자로 모두 변환한다.<br />
+	 * 문자열에서 검색문자를 치환문자로 모두 변환한다.<br>
 	 * 
 	 * <pre>
 	 * StringUtils.replaceChars(null, *, *)        = null
@@ -2855,7 +2854,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열에서 검색문자열를 치환문자열로 모두 변환한다.<br />
+	 * 문자열에서 검색문자열를 치환문자열로 모두 변환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.replaceChars(null, *, *)           = null
@@ -2879,7 +2878,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열을 검색리스트 및 치환리스트의 각각 같은 인덱스의 문자열로 치환하여 반환한다.<br />
+	 * 문자열을 검색리스트 및 치환리스트의 각각 같은 인덱스의 문자열로 치환하여 반환한다.<br>
 	 * 
 	 * <pre>
 	 *  StringUtils.replaceEach(null, *, *)        = null
@@ -2905,8 +2904,8 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 문자열을 검색리스트 및 치환리스트의 각각 같은 인덱스의 문자열로 치환하는 작업을<br /> 
-	 * 검색리스트의 길이만큼 반복하여 반환한다.<br />
+	 * 문자열을 검색리스트 및 치환리스트의 각각 같은 인덱스의 문자열로 치환하는 작업을<br> 
+	 * 검색리스트의 길이만큼 반복하여 반환한다.<br>
 	 * 
 	 * <pre>
 	 *  StringUtils.replaceEachRepeatedly(null, *, *) = null
@@ -2979,7 +2978,7 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-	 * 문자열 내에서 검색문자열을 검색후 치환문자열로 치환하여 반환한다.<br />
+	 * 문자열 내에서 검색문자열을 검색후 치환문자열로 치환하여 반환한다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.replaceOnce(null, *, *)        = null
@@ -3056,7 +3055,7 @@ public final class StringUtils {
 	}
 
 	/**
-	 * 구분자를 구분으로 문자열을 나눈 후 나눠진 단어들을 역순으로 바꾼다.<br />
+	 * 구분자를 구분으로 문자열을 나눈 후 나눠진 단어들을 역순으로 바꾼다.<br>
 	 *
 	 * <pre>
 	 * StringUtils.reverseDelimited(null, *)      = null
@@ -3153,7 +3152,7 @@ public final class StringUtils {
 	}
 
 	/**
-     * 공백문자를 구분자로 사용하여 문자열을 분리한다.<br />
+     * 공백문자를 구분자로 사용하여 문자열을 분리한다.<br>
      *
      * <pre>
      * StringUtils.split(null)       = null
@@ -3190,7 +3189,7 @@ public final class StringUtils {
 	}
 
 	/**
-     * 문자열을 구분자로 사용하여 분리한다.<br />
+     * 문자열을 구분자로 사용하여 분리한다.<br>
      *
      * <pre>
      * StringUtils.split(null, *)         = null
@@ -3212,7 +3211,7 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-     * 문자열을 구분자를 사용하여 최대크기 만큼의 배열로 분리한다.<br />
+     * 문자열을 구분자를 사용하여 최대크기 만큼의 배열로 분리한다.<br>
      *
      * <pre>
      * StringUtils.split(null, *, *)            = null
@@ -3233,8 +3232,8 @@ public final class StringUtils {
     }
 
 	/**
-     * 문자열을 <code>java.lang.Character.getType(char)</code>의 리턴타입으로 구분하여 <br />
-     * 배열로 분할한다.영문대소문자타입구분<br />
+     * 문자열을 <code>java.lang.Character.getType(char)</code>의 리턴타입으로 구분하여 <br>
+     * 배열로 분할한다.영문대소문자타입구분<br>
      * 
      * <pre>
      * StringUtils.splitByCharacterType(null)         = null
@@ -3257,8 +3256,8 @@ public final class StringUtils {
 	// Mid
 	//-----------------------------------------------------------------------
 	/**
-     * 문자열을 <code>java.lang.Character.getType(char)</code>의 리턴타입으로 구분하여 <br />
-     * 배열로 분할한다.영문대소문자타입구분하지않음<br />
+     * 문자열을 <code>java.lang.Character.getType(char)</code>의 리턴타입으로 구분하여 <br>
+     * 배열로 분할한다.영문대소문자타입구분하지않음<br>
      * 
      * <pre>
      * StringUtils.splitByCharacterTypeCamelCase(null)         = null
@@ -3279,7 +3278,7 @@ public final class StringUtils {
     }
 
 	/**
-     * 문자열을 구분자를 사용하여 배열로 분리한다.<br />
+     * 문자열을 구분자를 사용하여 배열로 분리한다.<br>
      *
      * <pre>
      * StringUtils.splitByWholeSeparator(null, *)               = null
@@ -3299,7 +3298,7 @@ public final class StringUtils {
     }
 
 	/**
-     * 문자열을 구분자를 사용하여 최대크기 만큼의 배열로 분리한다.<br />
+     * 문자열을 구분자를 사용하여 최대크기 만큼의 배열로 분리한다.<br>
      *
      * <pre>
      * StringUtils.splitByWholeSeparator(null, *, *)               = null
@@ -3321,7 +3320,7 @@ public final class StringUtils {
     }
 
 	/**
-     * 문자열을 구분자를 사용하여 배열로 분리한다.<br />
+     * 문자열을 구분자를 사용하여 배열로 분리한다.<br>
      *
      * <pre>
      * StringUtils.splitByWholeSeparatorPreserveAllTokens(null, *)               = null
@@ -3341,7 +3340,7 @@ public final class StringUtils {
     }
 
 	/**
-     * 문자열을 구분자를 사용하여 최대크기 만큼의 배열로 분리한다.<br />
+     * 문자열을 구분자를 사용하여 최대크기 만큼의 배열로 분리한다.<br>
      *
      * <pre>
      * StringUtils.splitByWholeSeparatorPreserveAllTokens(null, *, *)               = null
@@ -3405,7 +3404,7 @@ public final class StringUtils {
 	}
 
 	/**
-     * 공백문자를 구분자로 사용하여 문자열을 분리한다.<br />
+     * 공백문자를 구분자로 사용하여 문자열을 분리한다.<br>
      *
      * <pre>
      * StringUtils.splitPreserveAllTokens(null)       = null
@@ -3423,7 +3422,7 @@ public final class StringUtils {
     }
 
 	/**
-     * 문자열을 구분자로 사용하여 배열로 분리한다.<br />
+     * 문자열을 구분자로 사용하여 배열로 분리한다.<br>
      *
      * <pre>
      * StringUtils.splitPreserveAllTokens(null, *)         = null
@@ -3449,7 +3448,7 @@ public final class StringUtils {
     }
 
 	/**
-     * 문자열을 구분자로 사용하여 배열로 분리한다.<br />
+     * 문자열을 구분자로 사용하여 배열로 분리한다.<br>
      *
      * <pre>
      * StringUtils.splitPreserveAllTokens(null, *)           = null
@@ -3475,7 +3474,7 @@ public final class StringUtils {
     }
 
 	/**
-     * 문자열을 구분자를 사용하여 최대크기 만큼의 배열로 분리한다.<br />
+     * 문자열을 구분자를 사용하여 최대크기 만큼의 배열로 분리한다.<br>
      *
      * <pre>
      * StringUtils.splitPreserveAllTokens(null, *, *)            = null
@@ -3543,7 +3542,7 @@ public final class StringUtils {
 	}
 
     /**
-     * 문자열이 검색문자로 시작되는지 확인한다.<br />
+     * 문자열이 검색문자로 시작되는지 확인한다.<br>
      *
      * <pre>
      * StringUtils.startsWith(null, null)      = true
@@ -3562,7 +3561,7 @@ public final class StringUtils {
     }
     
     /**
-     * 문자열이 배열안의 검색문자로 시작되는지 확인한다.<br />
+     * 문자열이 배열안의 검색문자로 시작되는지 확인한다.<br>
      * 
      * <pre>
      * StringUtils.startsWithAny(null, null)      = false
@@ -3583,7 +3582,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열이 검색문자로 대소문자 구분없이 시작되는지 확인한다.<br />
+     * 문자열이 검색문자로 대소문자 구분없이 시작되는지 확인한다.<br>
      *
      * <pre>
      * StringUtils.startsWithIgnoreCase(null, null)      = true
@@ -3716,7 +3715,7 @@ public final class StringUtils {
 	}
 
     /**
-     * 문자열의 시작과 끝에서 스페이스을 제거한다.<br />
+     * 문자열의 시작과 끝에서 스페이스을 제거한다.<br>
      *
      * <pre>
      * StringUtils.strip(null)     = null
@@ -3738,7 +3737,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열 좌우에 stripChars에 존재하는 문자를 제거한다.<br />
+     * 문자열 좌우에 stripChars에 존재하는 문자를 제거한다.<br>
      *
      * <pre>
      * StringUtils.strip(null, *)          = null
@@ -3760,7 +3759,7 @@ public final class StringUtils {
     }
 
     /**
-     * 배열에 있는 모든 문자열들을 앞뒤에 있는 스페이스를 제거한다.<br />
+     * 배열에 있는 모든 문자열들을 앞뒤에 있는 스페이스를 제거한다.<br>
      *
      * <pre>
      * StringUtils.stripAll(null)             = null
@@ -3779,7 +3778,7 @@ public final class StringUtils {
     // Mid
     //-----------------------------------------------------------------------
     /**
-     * 배열에 있는 모든 문자열을 대상으로 앞뒤에 존재하는 제거문자들을 제거한다.<br />
+     * 배열에 있는 모든 문자열을 대상으로 앞뒤에 존재하는 제거문자들을 제거한다.<br>
      *
      * <pre>
      * StringUtils.stripAll(null, *)                = null
@@ -3799,7 +3798,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열을 뒤에서부터 제거문자들 하나식 제거한다.<br />
+     * 문자열을 뒤에서부터 제거문자들 하나식 제거한다.<br>
      *
      * <pre>
      * StringUtils.stripEnd(null, *)          = null
@@ -3823,7 +3822,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열을 앞에서부터 제거문자들 하나식 제거한다.<br />
+     * 문자열을 앞에서부터 제거문자들 하나식 제거한다.<br>
      *
      * <pre>
      * StringUtils.stripStart(null, *)          = null
@@ -3846,8 +3845,8 @@ public final class StringUtils {
     }
 
     /**
-     * 처리문자가 NULL일경우 공백을 반환, 아닐경우 좌우에 있는<br />
-     * 스페이스를 제거한다.<br />  
+     * 처리문자가 NULL일경우 공백을 반환, 아닐경우 좌우에 있는<br>
+     * 스페이스를 제거한다.<br>  
      *
      * <pre>
      * StringUtils.stripToEmpty(null)     = ""
@@ -3868,7 +3867,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열 좌우에 있는 스페이스를 제거한다.<br />
+     * 문자열 좌우에 있는 스페이스를 제거한다.<br>
      *
      * <pre>
      * StringUtils.stripToNull(null)     = null
@@ -3889,7 +3888,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열 내에서 문자열을 취득한다.<br />
+     * 문자열 내에서 문자열을 취득한다.<br>
      * 
      * <p> 
      * 문자열의 마이너스도 사용가능한 <code>n</code>번째에서 부터 마지막까지의 문자열을 취득.
@@ -3920,7 +3919,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열 내에서 문자열을 취득한다.<br />
+     * 문자열 내에서 문자열을 취득한다.<br>
      * 
      * <p> 
      * 문자열의 마이너스도 사용가능한 <code>n</code>번째에서 부터 마지막까지의 문자열을 취득.
@@ -3953,7 +3952,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열의 처음 SEPARATOR부분부터 문자열을 구한다.<br />
+     * 문자열의 처음 SEPARATOR부분부터 문자열을 구한다.<br>
      *
      * <pre>
      * StringUtils.substringAfter(null, *)      = null
@@ -3975,7 +3974,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열의 마지막 separator부분부터 문자열을 구한다.<br />
+     * 문자열의 마지막 separator부분부터 문자열을 구한다.<br>
      *
      * <pre>
      * StringUtils.substringAfterLast(null, *)      = null
@@ -4000,7 +3999,7 @@ public final class StringUtils {
     // SubStringAfter/SubStringBefore
     //-----------------------------------------------------------------------
     /**
-     * 문자열의 처음 SEPARATOR부분까지 문자열을 구한다.<br />
+     * 문자열의 처음 SEPARATOR부분까지 문자열을 구한다.<br>
      *
      * <pre>
      * StringUtils.substringBefore(null, *)      = null
@@ -4022,7 +4021,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열의 마지막 separator부분까지 문자열을 구한다.<br />
+     * 문자열의 마지막 separator부분까지 문자열을 구한다.<br>
      * 
      * <pre>
      * StringUtils.substringBeforeLast(null, *)      = null
@@ -4046,7 +4045,7 @@ public final class StringUtils {
     // Substring between
     //-----------------------------------------------------------------------
     /**
-     * 문자열에서 TAG사이에 있는 문자열을 구한다.<br />
+     * 문자열에서 TAG사이에 있는 문자열을 구한다.<br>
      * 
      * <pre>
      * StringUtils.substringBetween(null, *)            = null
@@ -4066,7 +4065,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열에서 OPEN부터 CLOSE까지 사이에 있는 문자열을 구한다.<br />
+     * 문자열에서 OPEN부터 CLOSE까지 사이에 있는 문자열을 구한다.<br>
      * 
      * <pre>
      * StringUtils.substringBetween("wx[b]yz", "[", "]") = "b"
@@ -4091,7 +4090,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열로부터 OPEN과 CLOSE에 감싸진 부분문자열을 배열로 구한다.<br />
+     * 문자열로부터 OPEN과 CLOSE에 감싸진 부분문자열을 배열로 구한다.<br>
      *
      * <pre>
      * StringUtils.substringsBetween("[a][b][c]", "[", "]") = ["a","b","c"]
@@ -4111,7 +4110,7 @@ public final class StringUtils {
     }
 
     /**
-     * 대문자는 소문자로 변환하고 소문자는 대문자로 변환한다.<br />
+     * 대문자는 소문자로 변환하고 소문자는 대문자로 변환한다.<br>
      *
      * <pre>
      * StringUtils.swapCase(null)                 = null
@@ -4284,7 +4283,7 @@ public final class StringUtils {
 	}
 
     /**
-     * 문자열의 좌우에 있는 스페이스를 제거한다.<br />
+     * 문자열의 좌우에 있는 스페이스를 제거한다.<br>
      * 
      * <pre>
      * StringUtils.trim(null)          = null
@@ -4322,8 +4321,8 @@ public final class StringUtils {
 	}
 
     /**
-     * 처리문자가 NULL일경우 공백을 반환, 아닐경우 좌우에 있는<br />
-     * 스페이스를 제거한다.<br />
+     * 처리문자가 NULL일경우 공백을 반환, 아닐경우 좌우에 있는<br>
+     * 스페이스를 제거한다.<br>
      * <pre>
      * StringUtils.trimToEmpty(null)          = ""
      * StringUtils.trimToEmpty("")            = ""
@@ -4340,8 +4339,8 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열의 좌우에 있는 스페이스를 제거한다.<br />
-     * 제거후 결과가 공백일경우 NULL를 반환<br />
+     * 문자열의 좌우에 있는 스페이스를 제거한다.<br>
+     * 제거후 결과가 공백일경우 NULL를 반환<br>
      *
      * <pre>
      * StringUtils.trimToNull(null)          = null
@@ -4359,7 +4358,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열의 첫문자를 소문자로 변환한다.<br />
+     * 문자열의 첫문자를 소문자로 변환한다.<br>
      *
      * <pre>
      * StringUtils.uncapitalize(null)  = null
@@ -4376,7 +4375,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열을 대문자로 변환한다.<br />
+     * 문자열을 대문자로 변환한다.<br>
      *
      * <pre>
      * StringUtils.upperCase(null)  = null
@@ -4392,7 +4391,7 @@ public final class StringUtils {
     }
 
     /**
-     * 문자열을 로케일에 맞춰 대문자로 변환한다.<br />
+     * 문자열을 로케일에 맞춰 대문자로 변환한다.<br>
      *
      * <pre>
      * StringUtils.upperCase(null, Locale.ENGLISH)  = null

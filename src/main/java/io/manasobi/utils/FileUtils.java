@@ -830,7 +830,7 @@ public final class FileUtils {
     
     /**
      * srcFile에 대한 tempFile 경로를 구한다. 
-     * 예) C:/srcFile.txt -> C:/srcFile_temp.txt
+     * 예) C:/srcFile.txt - C:/srcFile_temp.txt
      * 
      * @param srcFile 대상 파일.
      * @return srcFile명에 _temp를 더한 파일명
@@ -1172,8 +1172,8 @@ public final class FileUtils {
 	}
 	
 	/**
-	 * 지정한 와일드카드가 포함된 파일들에 대한 파일명의 리스트를 가져온다.<br/>
-	 * 예) 와일드 카드: "test*.*" -> test로 시작되는 파일 전부
+	 * 지정한 와일드카드가 포함된 파일들에 대한 파일명의 리스트를 가져온다.<br>
+	 * 예) 와일드 카드: "test*.*" - test로 시작되는 파일 전부
 	 * 
 	 * @param dir 디렉토리
 	 * @param wildcards 포함시킬 와일드카드
@@ -1202,8 +1202,8 @@ public final class FileUtils {
 	}
 
 	/**
-	 * 지정한 와일드카드가 포함된 파일들에 대해 File 타입의 배열로 가져온다.<br/>
-	 * 예) 와일드 카드: "test*.*" -> test로 시작되는 파일 전부
+	 * 지정한 와일드카드가 포함된 파일들에 대해 File 타입의 배열로 가져온다.<br>
+	 * 예) 와일드 카드: "test*.*" - test로 시작되는 파일 전부
 	 * 
 	 * @param dir 디렉토리
 	 * @param wildcards 포함시킬 와일드카드
@@ -1227,8 +1227,8 @@ public final class FileUtils {
 	}
 	
 	/**
-	 * 지정한 와일드카드를 포함하지않는 파일들에 대한 파일명의 리스트를 가져온다.<br/>
-	 * 예) 와일드 카드: "test*.*" -> test로 시작되는 파일 전부 제외
+	 * 지정한 와일드카드를 포함하지않는 파일들에 대한 파일명의 리스트를 가져온다.<br>
+	 * 예) 와일드 카드: "test*.*" - test로 시작되는 파일 전부 제외
 	 * 
 	 * @param dir 디렉토리
 	 * @param wildcards 제외시킬 와일드카드
@@ -1257,8 +1257,8 @@ public final class FileUtils {
 	}
 	
 	/**
-	 * 지정한 와일드카드를 포함하지않는 파일들에 대해 File 타입의 배열로 가져온다.<br/>
-	 * 예) 와일드 카드: "test*.*" -> test로 시작되는 파일 전부 제외
+	 * 지정한 와일드카드를 포함하지않는 파일들에 대해 File 타입의 배열로 가져온다.<br>
+	 * 예) 와일드 카드: "test*.*" - test로 시작되는 파일 전부 제외
 	 * 
 	 * @param dir 디렉토리
 	 * @param wildcards 제외시킬 와일드카드
@@ -1624,7 +1624,7 @@ public final class FileUtils {
 	
 
 	/**
-	 * 대상 파일을 FileInputStream으로 반환한다.<br/>
+	 * 대상 파일을 FileInputStream으로 반환한다.<br>
 	 * 
 	 * @param file 대상 파일
 	 * @return 대상 파일에 대한 FileInputStream
@@ -1658,7 +1658,7 @@ public final class FileUtils {
 	}
 	
 	/**
-	 * 대상 파일을 FileInputStream으로 반환한다.<br/>
+	 * 대상 파일을 FileInputStream으로 반환한다.<br>
 	 * 
 	 * @param filePath 대상 파일 경로
 	 * @return 대상 파일에 대한 FileInputStream
@@ -1861,6 +1861,7 @@ public final class FileUtils {
 	 * 대상 파일을 BufferedWriter로 반환한다.
 	 * 
 	 * @param file 대상 파일
+	 * @param charSet 인코딩에 사용할 캐릭터셋
 	 * @return 대상 파일에 대한 FileWriter
 	 */
 	public static BufferedWriter openBufferWriter(File file, String charSet) { 
@@ -1871,6 +1872,7 @@ public final class FileUtils {
 	 * 대상 파일을 BufferedWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
 	 * 
 	 * @param file 대상 파일
+	 * @param charSet 인코딩에 사용할 캐릭터셋
 	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
 	 * @return 대상 파일에 대한 FileWriter
 	 */
@@ -1923,6 +1925,7 @@ public final class FileUtils {
 	 * 대상 파일을 BufferedWriter로 반환한다.
 	 * 
 	 * @param filePath 대상 파일 경로
+	 * @param charSet 인코딩에 사용할 캐릭터셋
 	 * @return 대상 파일에 대한 FileWriter
 	 */
 	public static BufferedWriter openBufferWriter(String filePath, String charSet) { 
@@ -1944,6 +1947,7 @@ public final class FileUtils {
 	 * 대상 파일을 BufferedWriter로 반환한다. append가 true이면 출력시 기존 파일의 내용 마지막에 덧붙인다.
 	 * 
 	 * @param filePath 대상 파일 경로
+	 * @param charSet 인코딩에 사용할 캐릭터셋
 	 * @param append 기존 파일에 내용을 덧붙일지에 대한 플래그
 	 * @return 대상 파일에 대한 FileWriter
 	 */
@@ -1952,7 +1956,7 @@ public final class FileUtils {
 	}
     
     /**
-	 * 파일을 읽어 들인 후 바이트 배열로 반환한다.<br/>
+	 * 파일을 읽어 들인 후 바이트 배열로 반환한다.<br>
 	 * 
 	 * @param file 대상 파일
 	 * @return 원본 파일의 byte[]
@@ -1972,7 +1976,7 @@ public final class FileUtils {
 	}
     
     /**
-	 * 파일을 읽어 들인 후 바이트 배열로 반환한다.<br/>
+	 * 파일을 읽어 들인 후 바이트 배열로 반환한다.<br>
 	 * 
 	 * @param file 대상 파일 경로
 	 * @return 원본 파일의 byte[]
@@ -2024,7 +2028,7 @@ public final class FileUtils {
     }
     
     /**
-	 * 원본 파일명을 대상 파일 명으로 변경한다.<br />
+	 * 원본 파일명을 대상 파일 명으로 변경한다.<br>
 	 * 파일변경후 원본 파일 삭제
 	 * 
 	 * @param srcFile  원본 파일

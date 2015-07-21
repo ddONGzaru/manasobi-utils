@@ -20,7 +20,7 @@ import java.util.Random;
 import org.apache.commons.lang3.CharUtils;
 
 /**
- * 랜덤한 문자열(영문, 한글)을 생성하는 기능을 제공한다.<br/>
+ * 랜덤한 문자열(영문, 한글)을 생성하는 기능을 제공한다.<br>
  * 랜덤한 문자열은 길이 지정, 특정 범위내의 문자들만을 생성하는 등의 부가적인 기능을 가진다.
  * 
  * @author manasobi

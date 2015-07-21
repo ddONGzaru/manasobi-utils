@@ -57,7 +57,6 @@ public class CmdUtils {
 	 * 
 	 * @param line     외부 프로세스 실행 명령어
 	 * @param argument 명령실행 파라미터
-	 * 
 	 * @return int 타입의 실행결과
 	 */
 	public static int execute(String line, String argument) throws CmdUtilsException {
@@ -72,7 +71,6 @@ public class CmdUtils {
 	 * 
 	 * @param line      외부 프로세스 실행 명령어
 	 * @param arguments 명령실행 파라미터 복수형
-	 * 
 	 * @return int 타입의 실행결과
 	 */
 	public static int execute(String line, String[] arguments) throws CmdUtilsException {
@@ -90,9 +88,7 @@ public class CmdUtils {
 	 * 명령어(commandLine)에 의한 외부 프로세스의 기동
 	 * 
 	 * @param commandLine 외부 프로세스 실행 명령어
-	 * @param argument    명령실행 파라미터
-	 * 
-	 *@return int 타입의 실행결과
+	 * @return int 타입의 실행결과
 	 */
 	public static int execute(CommandLine commandLine) throws CmdUtilsException {
 
@@ -104,7 +100,6 @@ public class CmdUtils {
 	 * 
 	 * @param commandLine 외부 프로세스 실행 명령어
 	 * @param argument    명령실행 파라미터
-	 * 
 	 * @return int 타입의 실행결과
 	 */
 	public static int execute(CommandLine commandLine, String argument) throws CmdUtilsException {
@@ -117,7 +112,6 @@ public class CmdUtils {
 	 * 
 	 * @param commandLine 외부 프로세스 실행 명령어
 	 * @param timeout     시간제한설정
-	 * 
 	 * @return int 타입의 실행결과
 	 */
 	public static int execute(CommandLine commandLine, long timeout) throws CmdUtilsException {

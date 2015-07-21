@@ -609,7 +609,7 @@ public final class IOUtils {
 	}
 
 	/**
-	 * InputStream의 내용을 기본 문자 인코딩 방식을 사용하여 한줄씩 읽고 List<String>로 반환한다.
+	 * InputStream의 내용을 기본 문자 인코딩 방식을 사용하여 한줄씩 읽고 List로 반환한다.
 	 * 
 	 * @param is 내용을 가져올 InputStream
 	 * @return 스트링으로 구성된 List
@@ -624,7 +624,7 @@ public final class IOUtils {
 	}
 
 	/**
-	 * InputStream의 내용을 지정된 문자 인코딩 방식을 사용하여 한줄씩 읽고 List<String>로 반환한다.
+	 * InputStream의 내용을 지정된 문자 인코딩 방식을 사용하여 한줄씩 읽고 List로 반환한다.
 	 * 
 	 * @param is 내용을 가져올 InputStream
 	 * @param encoding 사용할 문자 인코딩 방식, null 일 경우 기본 인코딩 방식 사용
@@ -640,7 +640,7 @@ public final class IOUtils {
 	}
 
 	/**
-	 * Reader 의 내용을 지정 문자 인코딩을 사용하여 한줄씩 읽고 List<String>로 반환한다.
+	 * Reader 의 내용을 지정 문자 인코딩을 사용하여 한줄씩 읽고 List로 반환한다.
 	 * 
 	 * @param reader 내용을 가져올 InputStream
 	 * @return 스트링으로 구성된 List
@@ -739,7 +739,7 @@ public final class IOUtils {
 	}
 
 	/**
-	 * InputStream 를 BufferedInputStream으로 변환한다.<br />
+	 * InputStream 를 BufferedInputStream으로 변환한다.<br>
 	 * 
 	 * @param is InputStream
 	 * @return 완충된 InputStream, 예외시 <code>null</code>
@@ -758,7 +758,7 @@ public final class IOUtils {
 	}
 
 	/**
-	 * 주어진 Reader의 객체가 BufferedReader인가를 확인후 BufferedReader를 반환한다.<br />
+	 * 주어진 Reader의 객체가 BufferedReader인가를 확인후 BufferedReader를 반환한다.<br>
 	 * 
 	 * @param reader Reader
 	 * @return 주어진 reader 또는 새로운 BufferedReader
