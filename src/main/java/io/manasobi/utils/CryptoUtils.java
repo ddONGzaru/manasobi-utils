@@ -44,7 +44,7 @@ public final class CryptoUtils {
      *
      * @return 자동 생성된 키를 Hex 문자열로 바꾼 값
      */
-    public static String generateHexDESKey() throws CryptoUtilsException {
+    public static String generateHexDESKey() {
     	
         byte[] rawKey = null;
         
@@ -77,7 +77,7 @@ public final class CryptoUtils {
      * 
      * @return 암화화 된 데이터
      */
-    public static byte[] encryptByDES(String keyHex, byte[] data) throws CryptoUtilsException {
+    public static byte[] encryptByDES(String keyHex, byte[] data) {
     	
         SecretKey key = getSecretDESKeyFromHex(keyHex);
         
@@ -108,7 +108,7 @@ public final class CryptoUtils {
      * 
      * @return 암호화 된 데이터를 문자열로 변환한 결과
      */
-    public static String encryptByDES(String keyHex, String data, String encoding) throws CryptoUtilsException {
+    public static String encryptByDES(String keyHex, String data, String encoding) {
 
         String encryptedString = null;
         
@@ -134,7 +134,7 @@ public final class CryptoUtils {
      *             
      * @return 복호화된 데이터 byte 배열
      */
-    public static byte[] decryptByDES(String keyHex, byte[] data) throws CryptoUtilsException {
+    public static byte[] decryptByDES(String keyHex, byte[] data) {
     	
         SecretKey key = getSecretDESKeyFromHex(keyHex);
         
@@ -165,7 +165,7 @@ public final class CryptoUtils {
      * 
      * @return 복호화된 문자열
      */
-    public static String decryptByDES(String keyHex, String data, String encoding) throws CryptoUtilsException {
+    public static String decryptByDES(String keyHex, String data, String encoding) {
     	
         String decryptedString = null;
         try {
@@ -191,7 +191,7 @@ public final class CryptoUtils {
      * 		
      * @return 생성된 SecretKey 객체
      */
-    private static SecretKey getSecretDESKeyFromHex(String keyHex) throws CryptoUtilsException {
+    private static SecretKey getSecretDESKeyFromHex(String keyHex) {
 
     	SecretKey key = null;
 
