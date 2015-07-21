@@ -45,7 +45,7 @@ public class CmdUtils {
 	 * @param line 외부 프로세스 실행 명령어
 	 * @return int 타입의 실행결과
 	 */
-	public static int execute(String line) throws CmdUtilsException {
+	public static int execute(String line) {
 		
 		CommandLine commandLine = CommandLine.parse(line);
 		
@@ -59,7 +59,7 @@ public class CmdUtils {
 	 * @param argument 명령실행 파라미터
 	 * @return int 타입의 실행결과
 	 */
-	public static int execute(String line, String argument) throws CmdUtilsException {
+	public static int execute(String line, String argument) {
 		
 		CommandLine commandLine = CommandLine.parse(line);
 		
@@ -73,7 +73,7 @@ public class CmdUtils {
 	 * @param arguments 명령실행 파라미터 복수형
 	 * @return int 타입의 실행결과
 	 */
-	public static int execute(String line, String[] arguments) throws CmdUtilsException {
+	public static int execute(String line, String[] arguments) {
 		
 		CommandLine commandLine = CommandLine.parse(line);
 		
@@ -90,7 +90,7 @@ public class CmdUtils {
 	 * @param commandLine 외부 프로세스 실행 명령어
 	 * @return int 타입의 실행결과
 	 */
-	public static int execute(CommandLine commandLine) throws CmdUtilsException {
+	public static int execute(CommandLine commandLine) {
 
 		return execute(commandLine, null, DEFAULT_TIMEOUT);
 	}
@@ -102,7 +102,7 @@ public class CmdUtils {
 	 * @param argument    명령실행 파라미터
 	 * @return int 타입의 실행결과
 	 */
-	public static int execute(CommandLine commandLine, String argument) throws CmdUtilsException {
+	public static int execute(CommandLine commandLine, String argument) {
 
 		return execute(commandLine, argument, DEFAULT_TIMEOUT);
 	}
@@ -114,7 +114,7 @@ public class CmdUtils {
 	 * @param timeout     시간제한설정
 	 * @return int 타입의 실행결과
 	 */
-	public static int execute(CommandLine commandLine, long timeout) throws CmdUtilsException {
+	public static int execute(CommandLine commandLine, long timeout) {
 		
 		return execute(commandLine, null, timeout);
 	}
@@ -128,7 +128,7 @@ public class CmdUtils {
 	 * 
 	 * @return int 타입의 실행결과
 	 */
-	public static int execute(CommandLine commandLine, String argument, long timeout) throws CmdUtilsException {
+	public static int execute(CommandLine commandLine, String argument, long timeout) {
 		
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();		
 		PumpStreamHandler streamHandler = new PumpStreamHandler(baos);

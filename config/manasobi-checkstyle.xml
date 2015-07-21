@@ -5,7 +5,7 @@
     This configuration file was written by the eclipse-cs plugin configuration editor
 -->
 <!--
-    Checkstyle-Configuration: ePapyrus_CheckStyle
+    Checkstyle-Configuration: manasobi_CheckStyle
     Description: none
 -->
 <module name="Checker">

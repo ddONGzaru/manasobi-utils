@@ -7,7 +7,7 @@ import java.util.List;
 import io.manasobi.exception.ByteUtilsException;
 
 /**
- * Byte[] 와 관련된 변환 및 조작 기능들을 제공한다.<br><br>
+ * Byte[] 와 관련된 변환 및 조작 기능들을 제공한다.<br>
  * 
  * @author manasobi
  * @since 1.0.0
@@ -70,7 +70,7 @@ public final class ByteUtils {
      *            16진수 문자열
      * @return 16진수 문자열을 변환한 byte 배열
      */
-    public static byte[] hexStringToBytes(String digits) throws ByteUtilsException {
+    public static byte[] hexStringToBytes(String digits) {
     	
         if (digits == null) { 
         	return null; 
@@ -155,7 +155,7 @@ public final class ByteUtils {
 	 * @param defaultValue 예외 발생시 기본으로 반환할 바이트
 	 * @return 바이트로 변환된 문자열
 	 */
-	public static byte toByte(String value, byte defaultValue) throws ByteUtilsException {
+	public static byte toByte(String value, byte defaultValue) {
 		try {
 			return Byte.parseByte(value);	
 		} catch (Exception e) {
@@ -163,7 +163,7 @@ public final class ByteUtils {
 		}
 	}
 
-    public static byte[] toByte(String data, String charset) throws ByteUtilsException {
+    public static byte[] toByte(String data, String charset) {
 		try {
 			return data.getBytes(charset);
 		} catch (UnsupportedEncodingException e) {
@@ -184,7 +184,7 @@ public final class ByteUtils {
 	 * @param defaultValue 예외 발생시 기본으로 반환할 바이트
 	 * @return Byte Object로 변환된 문자열
 	 */
-	public static Byte toByteObject(String value, Byte defaultValue) throws ByteUtilsException {
+	public static Byte toByteObject(String value, Byte defaultValue) {
 		try {
 			return new Byte(value);
 		} catch (Exception e) {
@@ -256,9 +256,8 @@ public final class ByteUtils {
 	 * @param digits 문자열
 	 * @param radix 진수(8, 10, 16만 가능)
 	 * @return 변환된 바이트 배열
-	 * @throws Exception 발생한 예외
 	 */
-	public static byte[] toBytes(String digits, int radix) throws Exception {
+	public static byte[] toBytes(String digits, int radix) {
 		
 		if (digits == null) {
 			return null;
@@ -300,9 +299,8 @@ public final class ByteUtils {
 	 * 
 	 * @param digits 16진수 문자열
 	 * @return 변환된 바이트 배열
-	 * @throws Exception 발생 예외
 	 */
-	public static byte[] toBytesFromHexString(String digits) throws Exception {
+	public static byte[] toBytesFromHexString(String digits) {
 		
 		if (digits == null) {
 			return null;
@@ -381,7 +379,6 @@ public final class ByteUtils {
 	 * @param bytes unsigned byte's array
 	 * @param offset 가져올 문자의 오프셋
 	 * @param length offset으로부터의 문자 길이만큼 가져옴
-	 * 
 	 * @return 변환된 16진수 문자열
 	 */
 	public static String toHexString(byte[] bytes, int offset, int length) {
@@ -463,9 +460,8 @@ public final class ByteUtils {
 	 * @param bytes 바이트 배열
 	 * @param charset 인코딩에 사용될 문자셋
 	 * @return charset으로 인코딩된 문자열
-	 * @throws ByteUtilsException 발생 예외
 	 */
-	public static String toString(byte[] bytes, String charset) throws ByteUtilsException {		
+	public static String toString(byte[] bytes, String charset) {		
 		try {
 			return new String(bytes, charset);
 		} catch (UnsupportedEncodingException e) {
