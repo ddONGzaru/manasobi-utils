@@ -23,7 +23,7 @@ apply plugin: 'spring-boot'
 apply plugin: 'io.spring.dependency-management'
 //apply plugin: 'eu.appsatori.fatjar'
 apply from:   'dependencies.gradle'
-
+apply plugin: "jacoco"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -108,4 +108,13 @@ task fatJar(type: Jar) {
 task sourcesJar(type: Jar, dependsOn: fatJar) {
     classifier = 'sources'
     from sourceSets.main.allSource
+}
+
+
+test {
+    jacoco{
+        excludes = ['io/recruit/commons/config/**']
+        //includes = ['com/bla/**']
+        append = false
+    }
 }
