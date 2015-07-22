@@ -15,7 +15,6 @@
  */
 package io.manasobi.utils;
 
-import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 
 import io.manasobi.exception.DigestUtilsException;

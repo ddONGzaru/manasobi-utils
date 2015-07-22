@@ -1,12 +1,9 @@
 package io.manasobi.utils
 
-import io.manasobi.constnat.Result
-
 import org.apache.commons.exec.CommandLine
 
-import spock.lang.Shared;
+import spock.lang.Shared
 import spock.lang.Specification
-import ch.qos.logback.core.status.Status
 
 class CmdUtilsTest extends Specification {
 	

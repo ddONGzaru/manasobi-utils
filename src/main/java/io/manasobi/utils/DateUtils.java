@@ -31,7 +31,6 @@ import org.joda.time.DateTime;
 import org.joda.time.DurationFieldType;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
-import org.springframework.context.i18n.LocaleContextHolder;
 
 
 /**
@@ -148,7 +147,7 @@ public final class DateUtils {
 	 * @return 입력받은 일자에 해당하는 요일
 	 */
 	public static String getDayOfWeek(String str) {
-		return getDayOfWeek(str, true, LocaleContextHolder.getLocale());
+		return getDayOfWeek(str, true, new Locale("ko","KR"));
 	}
 	
 	/**
