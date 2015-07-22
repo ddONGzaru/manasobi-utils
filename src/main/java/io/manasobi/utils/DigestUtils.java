@@ -37,13 +37,13 @@ public final class DigestUtils {
 	 * @param charsetName 인코딩시 사용할 캐릭터셋
 	 * @return 인코딩된 문자열
 	 */
-	public static String encodeCharset(String str, String charsetName) throws DigestUtilsException {
+	public static String encodeCharset(String str, String charsetName) {
 
 		String result = "";
 
 		try {
 			result = new String(str.getBytes(charsetName), charsetName);
-		} catch (UnsupportedEncodingException e) {
+		} catch (Exception e) {
 			throw new DigestUtilsException(e.getMessage());
 		}
 
@@ -160,7 +160,7 @@ public final class DigestUtils {
 	 * @param secure  암호화시 사용할 알고리즘
 	 * @return 알고리즘에 의해 암호화된 문자열
 	 */
-	public static String encodePassword(String password, Secure secure) throws DigestUtilsException {
+	public static String encodePassword(String password, Secure secure) {
 
 		byte[] unencodedPassword = password.getBytes();
 
