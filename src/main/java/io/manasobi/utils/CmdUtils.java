@@ -35,7 +35,7 @@ import io.manasobi.exception.CmdUtilsException;
 
 public final class CmdUtils {
 	
-	private CmdUtils() {}
+	private CmdUtils() { }
 	
 	private static final int SUCCESS_RETURN_CODE = 0;
 	
