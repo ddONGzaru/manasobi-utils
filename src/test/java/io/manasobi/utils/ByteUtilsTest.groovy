@@ -36,12 +36,12 @@ class ByteUtilsTest extends Specification {
 		when: '16진수 문자열이 아님'			
 			ByteUtils.hexStringToBytes('15AG')
 		then:
-			NumberFormatException e1 = thrown()
+			thrown(NumberFormatException)
 
 		when: '글자 수 틀림 (문자열 2자리가 1개의 byte로 바뀌는데 문자열이 3개)'			
 			ByteUtils.hexStringToBytes('15A')
 		then:
-			ByteUtilsException e2 = thrown()
+			thrown(ByteUtilsException)
 	}
 	
 	def "printPrettyHex() 테스트"() {
@@ -103,7 +103,7 @@ class ByteUtilsTest extends Specification {
 		when:
 			result = ByteUtils.toByte('hello', 'invalid charset')
 		then:
-			final ByteUtilsException e = thrown()
+			ByteUtilsException e = thrown()
 			e.message == 'invalid charset'
 	}
 	
@@ -163,7 +163,7 @@ class ByteUtilsTest extends Specification {
 		when:
 			ByteUtils.toBytes(digit, 16) == exception
 		then:
-			final IllegalArgumentException exception = thrown()
+			thrown(IllegalArgumentException)
 	}
 	
 	def "toBytes() :: hexStringToBytes과 같으나 radix를 기준으로 변환 [예외: 부적절한 radix]"() {
@@ -174,7 +174,7 @@ class ByteUtilsTest extends Specification {
 		when:
 			ByteUtils.toBytes('144025', 2) == exception
 		then:
-			final IllegalArgumentException exception = thrown()
+			thrown(IllegalArgumentException)
 	}
 	
 	def "toBytesFromHexString() :: String을 byte[]배열로 변환 [testHexStringToBytes, toBytes와 같음]"() {
@@ -195,7 +195,7 @@ class ByteUtilsTest extends Specification {
 		when:
 			ByteUtils.toBytesFromHexString(digit)
 		then:
-			final IllegalArgumentException exception = thrown()
+			thrown(IllegalArgumentException)
 	}
 
 	def "toBytesFromHexString() :: String을 byte[]배열로 변환 예외 [잘못된 16진수 문자열]"() {
@@ -206,7 +206,7 @@ class ByteUtilsTest extends Specification {
 		when:
 			ByteUtils.toBytesFromHexString(digit)
 		then:
-			final NumberFormatException exception = thrown()
+			thrown(NumberFormatException)
 	}
 	
 	def "toHexString() :: byte 또는 byte배열을 16진수의 String으로 변환 [printPrettyHex와 같음]"() {

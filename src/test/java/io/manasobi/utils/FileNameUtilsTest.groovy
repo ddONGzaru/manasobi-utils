@@ -212,7 +212,7 @@ class FileNameUtilsTest extends Specification {
 		when:
 			FileNameUtils.appendWindowsFileSeparator(null)
 		then:
-			final NullPointerException exception = thrown()
+			thrown(NullPointerException)
 				
 		expect:
 			FileNameUtils.appendWindowsFileSeparator(fileName) == result
@@ -230,7 +230,7 @@ class FileNameUtilsTest extends Specification {
 		when:
 			FileNameUtils.appendFileSeparator(null)
 		then:
-			final NullPointerException exception = thrown()
+			thrown(NullPointerException)
 				
 		expect:
 			FileNameUtils.appendFileSeparator(fileName) == result
