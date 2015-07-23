@@ -1,27 +1,26 @@
 package io.manasobi.utils
 
-import groovy.io.FileType
+import org.junit.Rule
+import org.junit.rules.TemporaryFolder
+
 import spock.lang.Shared
 import spock.lang.Specification
 
 class FileUtilsTest extends Specification {
 	
-	@Shared File file
-	
-	def setupSpec() {
-		
-		File.createTempFile('temp_', 'txt').with {
-			write 'FileUtils의 byteCountToDisplaySize() 테스트'
-			file = new File(absolutePath) 
-		}
-	}
+	@Rule
+	TemporaryFolder tempFolder = new TemporaryFolder();
 	
 	def "byteCountToDisplaySize() :: byte단위의 파일 사이즈를 읽기 쉽도록 EB, PB, TB, GB, MB, KB, bytes 단위로 파싱하여 반환"() {
 		
+		setup:
+			File tempFile = tempFolder.newFile('temp_file')
+			tempFile << 'FileUtils의 byteCountToDisplaySize()'
+		
 		when:
-			String fileSize = FileUtils.byteCountToDisplaySize(file)
+			String fileSize = FileUtils.byteCountToDisplaySize(tempFile)
 		then:
-			fileSize == '47 bytes'
+			fileSize == '37 bytes'
 			
 		expect:
 			FileUtils.byteCountToDisplaySize(size) == result
